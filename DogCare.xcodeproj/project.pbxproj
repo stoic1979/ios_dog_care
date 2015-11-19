@@ -1,0 +1,728 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48C38BF21BFCB7C500E178E2 /* AddVaccinDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C38BF11BFCB7C500E178E2 /* AddVaccinDetailsViewController.m */; };
+		48C38BF51BFCB7F100E178E2 /* AddAntiparasiticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C38BF41BFCB7F100E178E2 /* AddAntiparasiticsViewController.m */; };
+		48C38BF81BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C38BF71BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m */; };
+		48C38BFB1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C38BFA1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m */; };
+		48C71A231BFD90A20011BAEA /* medical_records-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A221BFD90A20011BAEA /* medical_records-images.jpg */; };
+		48C71A2C1BFD90BE0011BAEA /* antiparacitics-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A241BFD90BE0011BAEA /* antiparacitics-images.jpg */; };
+		48C71A2D1BFD90BE0011BAEA /* Calender-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A251BFD90BE0011BAEA /* Calender-image.jpg */; };
+		48C71A2E1BFD90BE0011BAEA /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A261BFD90BE0011BAEA /* dog.jpg */; };
+		48C71A2F1BFD90BE0011BAEA /* medical admistration-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A271BFD90BE0011BAEA /* medical admistration-images.jpg */; };
+		48C71A301BFD90BE0011BAEA /* memo-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A281BFD90BE0011BAEA /* memo-images.jpg */; };
+		48C71A311BFD90BE0011BAEA /* notes-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A291BFD90BE0011BAEA /* notes-images.jpg */; };
+		48C71A321BFD90BE0011BAEA /* vaccination-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A2A1BFD90BE0011BAEA /* vaccination-images.jpg */; };
+		48C71A331BFD90BE0011BAEA /* visits:surgery-images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48C71A2B1BFD90BE0011BAEA /* visits:surgery-images.jpg */; };
+		48C71A351BFD9C640011BAEA /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C71A341BFD9C640011BAEA /* libsqlite3.0.dylib */; };
+		48C71A411BFD9CD30011BAEA /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A371BFD9CD30011BAEA /* FMDatabase.m */; };
+		48C71A421BFD9CD30011BAEA /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A391BFD9CD30011BAEA /* FMDatabaseAdditions.m */; };
+		48C71A431BFD9CD30011BAEA /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A3B1BFD9CD30011BAEA /* FMDatabasePool.m */; };
+		48C71A441BFD9CD30011BAEA /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A3D1BFD9CD30011BAEA /* FMDatabaseQueue.m */; };
+		48C71A451BFD9CD30011BAEA /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A401BFD9CD30011BAEA /* FMResultSet.m */; };
+		48C71A491BFDA4670011BAEA /* DogsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A481BFDA4670011BAEA /* DogsTableViewController.m */; };
+		48C71A4D1BFDA5BF0011BAEA /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C71A4C1BFDA5BF0011BAEA /* DBManager.m */; };
+		6A167C5B1BF5BB86006795D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C5A1BF5BB86006795D3 /* main.m */; };
+		6A167C5E1BF5BB86006795D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C5D1BF5BB86006795D3 /* AppDelegate.m */; };
+		6A167C641BF5BB86006795D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C621BF5BB86006795D3 /* Main.storyboard */; };
+		6A167C661BF5BB86006795D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C651BF5BB86006795D3 /* Images.xcassets */; };
+		6A167C691BF5BB86006795D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C671BF5BB86006795D3 /* LaunchScreen.xib */; };
+		6A167C751BF5BB86006795D3 /* DogCareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C741BF5BB86006795D3 /* DogCareTests.m */; };
+		6A167C801BF5BBA6006795D3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C7F1BF5BBA6006795D3 /* HomeViewController.m */; };
+		6A167C8C1BF5BCC6006795D3 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C8B1BF5BCC6006795D3 /* menu-icon.png */; };
+		6A167C8F1BF5C1E2006795D3 /* SIdeMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C8E1BF5C1E2006795D3 /* SIdeMenuViewController.m */; };
+		6A167CA21BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C941BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.m */; };
+		6A167CA31BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C961BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.m */; };
+		6A167CA41BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C981BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		6A167CA51BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C9A1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.m */; };
+		6A167CA61BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167C9C1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		6A167CA71BF5C3F8006795D3 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C9E1BF5C3F8006795D3 /* menu-button.png */; };
+		6A167CA81BF5C3F8006795D3 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167C9F1BF5C3F8006795D3 /* menu-button@2x.png */; };
+		6A167CA91BF5C3F8006795D3 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167CA11BF5C3F8006795D3 /* SlideNavigationController.m */; };
+		6A167CAF1BF5C555006795D3 /* animation.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CAB1BF5C555006795D3 /* animation.png */; };
+		6A167CB01BF5C555006795D3 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CAC1BF5C555006795D3 /* gear.png */; };
+		6A167CB11BF5C555006795D3 /* leftMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CAD1BF5C555006795D3 /* leftMenu.jpg */; };
+		6A167CB21BF5C555006795D3 /* rightMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CAE1BF5C555006795D3 /* rightMenu.jpg */; };
+		6A167CB51BF5D555006795D3 /* AddDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167CB41BF5D555006795D3 /* AddDetailsViewController.m */; };
+		6A167CD91BF61070006795D3 /* done-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CD81BF61070006795D3 /* done-image.png */; };
+		6AA2A6921BF769560010493E /* veterinaries-images.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AA2A68F1BF769560010493E /* veterinaries-images.png */; };
+		6AED13B11BF99ABB000F074C /* VaccinationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13B01BF99ABB000F074C /* VaccinationsViewController.m */; };
+		6AED13B41BF99ADA000F074C /* AntiparasiticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13B31BF99ADA000F074C /* AntiparasiticsViewController.m */; };
+		6AED13B71BF99B8D000F074C /* Medicine&AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13B61BF99B8D000F074C /* Medicine&AdminViewController.m */; };
+		6AED13BA1BF99BAD000F074C /* Visits&SugeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13B91BF99BAD000F074C /* Visits&SugeriesViewController.m */; };
+		6AED13BD1BF99BBB000F074C /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13BC1BF99BBB000F074C /* NotesViewController.m */; };
+		6AF25D241BF70AC1000E3F18 /* MemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF25D231BF70AC1000E3F18 /* MemoViewController.m */; };
+		6AF25D271BF70AD8000E3F18 /* MedicalRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF25D261BF70AD8000E3F18 /* MedicalRecordsViewController.m */; };
+		6AF25D2A1BF70AF4000E3F18 /* VeterinariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF25D291BF70AF4000E3F18 /* VeterinariesViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6A167C6F1BF5BB86006795D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A167C4D1BF5BB86006795D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A167C541BF5BB86006795D3;
+			remoteInfo = DogCare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48C38BF01BFCB7C500E178E2 /* AddVaccinDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddVaccinDetailsViewController.h; path = DogCare/AddVaccinDetailsViewController.h; sourceTree = "<group>"; };
+		48C38BF11BFCB7C500E178E2 /* AddVaccinDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddVaccinDetailsViewController.m; path = DogCare/AddVaccinDetailsViewController.m; sourceTree = "<group>"; };
+		48C38BF31BFCB7F100E178E2 /* AddAntiparasiticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAntiparasiticsViewController.h; path = DogCare/AddAntiparasiticsViewController.h; sourceTree = "<group>"; };
+		48C38BF41BFCB7F100E178E2 /* AddAntiparasiticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAntiparasiticsViewController.m; path = DogCare/AddAntiparasiticsViewController.m; sourceTree = "<group>"; };
+		48C38BF61BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddMedicineAdminDetailsViewController.h; path = DogCare/AddMedicineAdminDetailsViewController.h; sourceTree = "<group>"; };
+		48C38BF71BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddMedicineAdminDetailsViewController.m; path = DogCare/AddMedicineAdminDetailsViewController.m; sourceTree = "<group>"; };
+		48C38BF91BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddVisitsSurgeriesDetailsViewController.h; path = DogCare/AddVisitsSurgeriesDetailsViewController.h; sourceTree = "<group>"; };
+		48C38BFA1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddVisitsSurgeriesDetailsViewController.m; path = DogCare/AddVisitsSurgeriesDetailsViewController.m; sourceTree = "<group>"; };
+		48C71A221BFD90A20011BAEA /* medical_records-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "medical_records-images.jpg"; sourceTree = "<group>"; };
+		48C71A241BFD90BE0011BAEA /* antiparacitics-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "antiparacitics-images.jpg"; path = "../antiparacitics-images.jpg"; sourceTree = "<group>"; };
+		48C71A251BFD90BE0011BAEA /* Calender-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Calender-image.jpg"; path = "../Calender-image.jpg"; sourceTree = "<group>"; };
+		48C71A261BFD90BE0011BAEA /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dog.jpg; path = ../dog.jpg; sourceTree = "<group>"; };
+		48C71A271BFD90BE0011BAEA /* medical admistration-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "medical admistration-images.jpg"; path = "../medical admistration-images.jpg"; sourceTree = "<group>"; };
+		48C71A281BFD90BE0011BAEA /* memo-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "memo-images.jpg"; path = "../memo-images.jpg"; sourceTree = "<group>"; };
+		48C71A291BFD90BE0011BAEA /* notes-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "notes-images.jpg"; path = "../notes-images.jpg"; sourceTree = "<group>"; };
+		48C71A2A1BFD90BE0011BAEA /* vaccination-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "vaccination-images.jpg"; path = "../vaccination-images.jpg"; sourceTree = "<group>"; };
+		48C71A2B1BFD90BE0011BAEA /* visits:surgery-images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "visits:surgery-images.jpg"; path = "../visits:surgery-images.jpg"; sourceTree = "<group>"; };
+		48C71A341BFD9C640011BAEA /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		48C71A361BFD9CD30011BAEA /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		48C71A371BFD9CD30011BAEA /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		48C71A381BFD9CD30011BAEA /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		48C71A391BFD9CD30011BAEA /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		48C71A3A1BFD9CD30011BAEA /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		48C71A3B1BFD9CD30011BAEA /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		48C71A3C1BFD9CD30011BAEA /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		48C71A3D1BFD9CD30011BAEA /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		48C71A3E1BFD9CD30011BAEA /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		48C71A3F1BFD9CD30011BAEA /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		48C71A401BFD9CD30011BAEA /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		48C71A471BFDA4670011BAEA /* DogsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DogsTableViewController.h; path = DogCare/DogsTableViewController.h; sourceTree = "<group>"; };
+		48C71A481BFDA4670011BAEA /* DogsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DogsTableViewController.m; path = DogCare/DogsTableViewController.m; sourceTree = "<group>"; };
+		48C71A4B1BFDA5BF0011BAEA /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		48C71A4C1BFDA5BF0011BAEA /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		6A167C551BF5BB86006795D3 /* DogCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A167C591BF5BB86006795D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A167C5A1BF5BB86006795D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A167C5C1BF5BB86006795D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6A167C5D1BF5BB86006795D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6A167C631BF5BB86006795D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6A167C651BF5BB86006795D3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6A167C681BF5BB86006795D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6A167C6E1BF5BB86006795D3 /* DogCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A167C731BF5BB86006795D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A167C741BF5BB86006795D3 /* DogCareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DogCareTests.m; sourceTree = "<group>"; };
+		6A167C7E1BF5BBA6006795D3 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		6A167C7F1BF5BBA6006795D3 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		6A167C8B1BF5BCC6006795D3 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-icon.png"; path = "../menu-icon.png"; sourceTree = "<group>"; };
+		6A167C8D1BF5C1E1006795D3 /* SIdeMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIdeMenuViewController.h; path = DogCare/SIdeMenuViewController.h; sourceTree = "<group>"; };
+		6A167C8E1BF5C1E2006795D3 /* SIdeMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIdeMenuViewController.m; path = DogCare/SIdeMenuViewController.m; sourceTree = "<group>"; };
+		6A167C921BF5C3F8006795D3 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		6A167C931BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
+		6A167C941BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
+		6A167C951BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScale.h; sourceTree = "<group>"; };
+		6A167C961BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScale.m; sourceTree = "<group>"; };
+		6A167C971BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScaleAndFade.h; sourceTree = "<group>"; };
+		6A167C981BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScaleAndFade.m; sourceTree = "<group>"; };
+		6A167C991BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		6A167C9A1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		6A167C9B1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
+		6A167C9C1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
+		6A167C9E1BF5C3F8006795D3 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
+		6A167C9F1BF5C3F8006795D3 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
+		6A167CA01BF5C3F8006795D3 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		6A167CA11BF5C3F8006795D3 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
+		6A167CAB1BF5C555006795D3 /* animation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animation.png; sourceTree = "<group>"; };
+		6A167CAC1BF5C555006795D3 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		6A167CAD1BF5C555006795D3 /* leftMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftMenu.jpg; sourceTree = "<group>"; };
+		6A167CAE1BF5C555006795D3 /* rightMenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rightMenu.jpg; sourceTree = "<group>"; };
+		6A167CB31BF5D555006795D3 /* AddDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddDetailsViewController.h; path = DogCare/AddDetailsViewController.h; sourceTree = "<group>"; };
+		6A167CB41BF5D555006795D3 /* AddDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDetailsViewController.m; path = DogCare/AddDetailsViewController.m; sourceTree = "<group>"; };
+		6A167CD81BF61070006795D3 /* done-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "done-image.png"; path = "../done-image.png"; sourceTree = "<group>"; };
+		6AA2A68F1BF769560010493E /* veterinaries-images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "veterinaries-images.png"; path = "../veterinaries-images.png"; sourceTree = "<group>"; };
+		6AED13AF1BF99ABB000F074C /* VaccinationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VaccinationsViewController.h; path = DogCare/VaccinationsViewController.h; sourceTree = "<group>"; };
+		6AED13B01BF99ABB000F074C /* VaccinationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VaccinationsViewController.m; path = DogCare/VaccinationsViewController.m; sourceTree = "<group>"; };
+		6AED13B21BF99ADA000F074C /* AntiparasiticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntiparasiticsViewController.h; path = DogCare/AntiparasiticsViewController.h; sourceTree = "<group>"; };
+		6AED13B31BF99ADA000F074C /* AntiparasiticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AntiparasiticsViewController.m; path = DogCare/AntiparasiticsViewController.m; sourceTree = "<group>"; };
+		6AED13B51BF99B8C000F074C /* Medicine&AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Medicine&AdminViewController.h"; path = "DogCare/Medicine&AdminViewController.h"; sourceTree = "<group>"; };
+		6AED13B61BF99B8D000F074C /* Medicine&AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Medicine&AdminViewController.m"; path = "DogCare/Medicine&AdminViewController.m"; sourceTree = "<group>"; };
+		6AED13B81BF99BAD000F074C /* Visits&SugeriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Visits&SugeriesViewController.h"; path = "DogCare/Visits&SugeriesViewController.h"; sourceTree = "<group>"; };
+		6AED13B91BF99BAD000F074C /* Visits&SugeriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Visits&SugeriesViewController.m"; path = "DogCare/Visits&SugeriesViewController.m"; sourceTree = "<group>"; };
+		6AED13BB1BF99BBB000F074C /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = DogCare/NotesViewController.h; sourceTree = "<group>"; };
+		6AED13BC1BF99BBB000F074C /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = DogCare/NotesViewController.m; sourceTree = "<group>"; };
+		6AF25D221BF70AC1000E3F18 /* MemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemoViewController.h; path = DogCare/MemoViewController.h; sourceTree = "<group>"; };
+		6AF25D231BF70AC1000E3F18 /* MemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemoViewController.m; path = DogCare/MemoViewController.m; sourceTree = "<group>"; };
+		6AF25D251BF70AD8000E3F18 /* MedicalRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicalRecordsViewController.h; path = DogCare/MedicalRecordsViewController.h; sourceTree = "<group>"; };
+		6AF25D261BF70AD8000E3F18 /* MedicalRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedicalRecordsViewController.m; path = DogCare/MedicalRecordsViewController.m; sourceTree = "<group>"; };
+		6AF25D281BF70AF4000E3F18 /* VeterinariesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VeterinariesViewController.h; path = DogCare/VeterinariesViewController.h; sourceTree = "<group>"; };
+		6AF25D291BF70AF4000E3F18 /* VeterinariesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VeterinariesViewController.m; path = DogCare/VeterinariesViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A167C521BF5BB86006795D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C71A351BFD9C640011BAEA /* libsqlite3.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A167C6B1BF5BB86006795D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48C38BFC1BFCC25E00E178E2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C7E1BF5BBA6006795D3 /* HomeViewController.h */,
+				6A167C7F1BF5BBA6006795D3 /* HomeViewController.m */,
+				6A167C8D1BF5C1E1006795D3 /* SIdeMenuViewController.h */,
+				6A167C8E1BF5C1E2006795D3 /* SIdeMenuViewController.m */,
+				48C71A471BFDA4670011BAEA /* DogsTableViewController.h */,
+				48C71A481BFDA4670011BAEA /* DogsTableViewController.m */,
+				6A167CB31BF5D555006795D3 /* AddDetailsViewController.h */,
+				6A167CB41BF5D555006795D3 /* AddDetailsViewController.m */,
+				6AF25D221BF70AC1000E3F18 /* MemoViewController.h */,
+				6AF25D231BF70AC1000E3F18 /* MemoViewController.m */,
+				6AF25D251BF70AD8000E3F18 /* MedicalRecordsViewController.h */,
+				6AF25D261BF70AD8000E3F18 /* MedicalRecordsViewController.m */,
+				6AF25D281BF70AF4000E3F18 /* VeterinariesViewController.h */,
+				6AF25D291BF70AF4000E3F18 /* VeterinariesViewController.m */,
+				6AED13AF1BF99ABB000F074C /* VaccinationsViewController.h */,
+				6AED13B01BF99ABB000F074C /* VaccinationsViewController.m */,
+				6AED13B21BF99ADA000F074C /* AntiparasiticsViewController.h */,
+				6AED13B31BF99ADA000F074C /* AntiparasiticsViewController.m */,
+				6AED13B51BF99B8C000F074C /* Medicine&AdminViewController.h */,
+				6AED13B61BF99B8D000F074C /* Medicine&AdminViewController.m */,
+				6AED13B81BF99BAD000F074C /* Visits&SugeriesViewController.h */,
+				6AED13B91BF99BAD000F074C /* Visits&SugeriesViewController.m */,
+				6AED13BB1BF99BBB000F074C /* NotesViewController.h */,
+				6AED13BC1BF99BBB000F074C /* NotesViewController.m */,
+				48C38BF01BFCB7C500E178E2 /* AddVaccinDetailsViewController.h */,
+				48C38BF11BFCB7C500E178E2 /* AddVaccinDetailsViewController.m */,
+				48C38BF31BFCB7F100E178E2 /* AddAntiparasiticsViewController.h */,
+				48C38BF41BFCB7F100E178E2 /* AddAntiparasiticsViewController.m */,
+				48C38BF61BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.h */,
+				48C38BF71BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m */,
+				48C38BF91BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.h */,
+				48C38BFA1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m */,
+			);
+			name = ViewControllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		48C71A461BFD9CD90011BAEA /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				48C71A361BFD9CD30011BAEA /* FMDatabase.h */,
+				48C71A371BFD9CD30011BAEA /* FMDatabase.m */,
+				48C71A381BFD9CD30011BAEA /* FMDatabaseAdditions.h */,
+				48C71A391BFD9CD30011BAEA /* FMDatabaseAdditions.m */,
+				48C71A3A1BFD9CD30011BAEA /* FMDatabasePool.h */,
+				48C71A3B1BFD9CD30011BAEA /* FMDatabasePool.m */,
+				48C71A3C1BFD9CD30011BAEA /* FMDatabaseQueue.h */,
+				48C71A3D1BFD9CD30011BAEA /* FMDatabaseQueue.m */,
+				48C71A3E1BFD9CD30011BAEA /* FMDB.h */,
+				48C71A3F1BFD9CD30011BAEA /* FMResultSet.h */,
+				48C71A401BFD9CD30011BAEA /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		48C71A4A1BFDA5990011BAEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				48C71A4B1BFDA5BF0011BAEA /* DBManager.h */,
+				48C71A4C1BFDA5BF0011BAEA /* DBManager.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6A167C4C1BF5BB86006795D3 = {
+			isa = PBXGroup;
+			children = (
+				48C71A4A1BFDA5990011BAEA /* Models */,
+				48C71A461BFD9CD90011BAEA /* FMDB */,
+				48C71A341BFD9C640011BAEA /* libsqlite3.0.dylib */,
+				6A167CAA1BF5C555006795D3 /* Images */,
+				6A167C901BF5C3F8006795D3 /* Source */,
+				6A167C571BF5BB86006795D3 /* DogCare */,
+				6A167C711BF5BB86006795D3 /* DogCareTests */,
+				6A167C561BF5BB86006795D3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6A167C561BF5BB86006795D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C551BF5BB86006795D3 /* DogCare.app */,
+				6A167C6E1BF5BB86006795D3 /* DogCareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A167C571BF5BB86006795D3 /* DogCare */ = {
+			isa = PBXGroup;
+			children = (
+				48C38BFC1BFCC25E00E178E2 /* ViewControllers */,
+				6A167C5C1BF5BB86006795D3 /* AppDelegate.h */,
+				6A167C5D1BF5BB86006795D3 /* AppDelegate.m */,
+				6A167C621BF5BB86006795D3 /* Main.storyboard */,
+				6A167C651BF5BB86006795D3 /* Images.xcassets */,
+				6A167C671BF5BB86006795D3 /* LaunchScreen.xib */,
+				6A167C581BF5BB86006795D3 /* Supporting Files */,
+			);
+			path = DogCare;
+			sourceTree = "<group>";
+		};
+		6A167C581BF5BB86006795D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C591BF5BB86006795D3 /* Info.plist */,
+				6A167C5A1BF5BB86006795D3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A167C711BF5BB86006795D3 /* DogCareTests */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C741BF5BB86006795D3 /* DogCareTests.m */,
+				6A167C721BF5BB86006795D3 /* Supporting Files */,
+			);
+			path = DogCareTests;
+			sourceTree = "<group>";
+		};
+		6A167C721BF5BB86006795D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C731BF5BB86006795D3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A167C901BF5C3F8006795D3 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C911BF5C3F8006795D3 /* Animations */,
+				6A167C9D1BF5C3F8006795D3 /* Assets */,
+				6A167CA01BF5C3F8006795D3 /* SlideNavigationController.h */,
+				6A167CA11BF5C3F8006795D3 /* SlideNavigationController.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6A167C911BF5C3F8006795D3 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C921BF5C3F8006795D3 /* SlideNavigationContorllerAnimator.h */,
+				6A167C931BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.h */,
+				6A167C941BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.m */,
+				6A167C951BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.h */,
+				6A167C961BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.m */,
+				6A167C971BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				6A167C981BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				6A167C991BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.h */,
+				6A167C9A1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.m */,
+				6A167C9B1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				6A167C9C1BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		6A167C9D1BF5C3F8006795D3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6A167C9E1BF5C3F8006795D3 /* menu-button.png */,
+				6A167C9F1BF5C3F8006795D3 /* menu-button@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		6A167CAA1BF5C555006795D3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6AA2A68F1BF769560010493E /* veterinaries-images.png */,
+				6A167CD81BF61070006795D3 /* done-image.png */,
+				48C71A241BFD90BE0011BAEA /* antiparacitics-images.jpg */,
+				48C71A251BFD90BE0011BAEA /* Calender-image.jpg */,
+				48C71A261BFD90BE0011BAEA /* dog.jpg */,
+				48C71A271BFD90BE0011BAEA /* medical admistration-images.jpg */,
+				48C71A281BFD90BE0011BAEA /* memo-images.jpg */,
+				48C71A291BFD90BE0011BAEA /* notes-images.jpg */,
+				48C71A2A1BFD90BE0011BAEA /* vaccination-images.jpg */,
+				48C71A2B1BFD90BE0011BAEA /* visits:surgery-images.jpg */,
+				48C71A221BFD90A20011BAEA /* medical_records-images.jpg */,
+				6A167C8B1BF5BCC6006795D3 /* menu-icon.png */,
+				6A167CAB1BF5C555006795D3 /* animation.png */,
+				6A167CAC1BF5C555006795D3 /* gear.png */,
+				6A167CAD1BF5C555006795D3 /* leftMenu.jpg */,
+				6A167CAE1BF5C555006795D3 /* rightMenu.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A167C541BF5BB86006795D3 /* DogCare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A167C781BF5BB86006795D3 /* Build configuration list for PBXNativeTarget "DogCare" */;
+			buildPhases = (
+				6A167C511BF5BB86006795D3 /* Sources */,
+				6A167C521BF5BB86006795D3 /* Frameworks */,
+				6A167C531BF5BB86006795D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DogCare;
+			productName = DogCare;
+			productReference = 6A167C551BF5BB86006795D3 /* DogCare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6A167C6D1BF5BB86006795D3 /* DogCareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A167C7B1BF5BB86006795D3 /* Build configuration list for PBXNativeTarget "DogCareTests" */;
+			buildPhases = (
+				6A167C6A1BF5BB86006795D3 /* Sources */,
+				6A167C6B1BF5BB86006795D3 /* Frameworks */,
+				6A167C6C1BF5BB86006795D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A167C701BF5BB86006795D3 /* PBXTargetDependency */,
+			);
+			name = DogCareTests;
+			productName = DogCareTests;
+			productReference = 6A167C6E1BF5BB86006795D3 /* DogCareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A167C4D1BF5BB86006795D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "WeaveBytes Infotech";
+				TargetAttributes = {
+					6A167C541BF5BB86006795D3 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					6A167C6D1BF5BB86006795D3 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 6A167C541BF5BB86006795D3;
+					};
+				};
+			};
+			buildConfigurationList = 6A167C501BF5BB86006795D3 /* Build configuration list for PBXProject "DogCare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6A167C4C1BF5BB86006795D3;
+			productRefGroup = 6A167C561BF5BB86006795D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A167C541BF5BB86006795D3 /* DogCare */,
+				6A167C6D1BF5BB86006795D3 /* DogCareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A167C531BF5BB86006795D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C71A2E1BFD90BE0011BAEA /* dog.jpg in Resources */,
+				6A167C641BF5BB86006795D3 /* Main.storyboard in Resources */,
+				6A167CA71BF5C3F8006795D3 /* menu-button.png in Resources */,
+				6A167CB01BF5C555006795D3 /* gear.png in Resources */,
+				6A167CD91BF61070006795D3 /* done-image.png in Resources */,
+				6A167CB11BF5C555006795D3 /* leftMenu.jpg in Resources */,
+				48C71A231BFD90A20011BAEA /* medical_records-images.jpg in Resources */,
+				6A167C691BF5BB86006795D3 /* LaunchScreen.xib in Resources */,
+				48C71A331BFD90BE0011BAEA /* visits:surgery-images.jpg in Resources */,
+				6A167CB21BF5C555006795D3 /* rightMenu.jpg in Resources */,
+				6A167C661BF5BB86006795D3 /* Images.xcassets in Resources */,
+				6A167C8C1BF5BCC6006795D3 /* menu-icon.png in Resources */,
+				48C71A321BFD90BE0011BAEA /* vaccination-images.jpg in Resources */,
+				48C71A2D1BFD90BE0011BAEA /* Calender-image.jpg in Resources */,
+				48C71A2C1BFD90BE0011BAEA /* antiparacitics-images.jpg in Resources */,
+				48C71A2F1BFD90BE0011BAEA /* medical admistration-images.jpg in Resources */,
+				6A167CAF1BF5C555006795D3 /* animation.png in Resources */,
+				6AA2A6921BF769560010493E /* veterinaries-images.png in Resources */,
+				6A167CA81BF5C3F8006795D3 /* menu-button@2x.png in Resources */,
+				48C71A311BFD90BE0011BAEA /* notes-images.jpg in Resources */,
+				48C71A301BFD90BE0011BAEA /* memo-images.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A167C6C1BF5BB86006795D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A167C511BF5BB86006795D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A167C8F1BF5C1E2006795D3 /* SIdeMenuViewController.m in Sources */,
+				6AED13B71BF99B8D000F074C /* Medicine&AdminViewController.m in Sources */,
+				48C71A451BFD9CD30011BAEA /* FMResultSet.m in Sources */,
+				6A167CA31BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				6A167CA61BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				48C71A491BFDA4670011BAEA /* DogsTableViewController.m in Sources */,
+				48C71A421BFD9CD30011BAEA /* FMDatabaseAdditions.m in Sources */,
+				48C38BFB1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m in Sources */,
+				6A167CA41BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				48C71A4D1BFDA5BF0011BAEA /* DBManager.m in Sources */,
+				48C38BF51BFCB7F100E178E2 /* AddAntiparasiticsViewController.m in Sources */,
+				6AED13B11BF99ABB000F074C /* VaccinationsViewController.m in Sources */,
+				48C38BF81BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m in Sources */,
+				6AF25D271BF70AD8000E3F18 /* MedicalRecordsViewController.m in Sources */,
+				6A167C5E1BF5BB86006795D3 /* AppDelegate.m in Sources */,
+				6AED13BA1BF99BAD000F074C /* Visits&SugeriesViewController.m in Sources */,
+				6AED13B41BF99ADA000F074C /* AntiparasiticsViewController.m in Sources */,
+				6A167CB51BF5D555006795D3 /* AddDetailsViewController.m in Sources */,
+				48C71A431BFD9CD30011BAEA /* FMDatabasePool.m in Sources */,
+				6A167CA51BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				48C71A411BFD9CD30011BAEA /* FMDatabase.m in Sources */,
+				6A167C5B1BF5BB86006795D3 /* main.m in Sources */,
+				6AF25D241BF70AC1000E3F18 /* MemoViewController.m in Sources */,
+				6A167C801BF5BBA6006795D3 /* HomeViewController.m in Sources */,
+				6AED13BD1BF99BBB000F074C /* NotesViewController.m in Sources */,
+				6AF25D2A1BF70AF4000E3F18 /* VeterinariesViewController.m in Sources */,
+				6A167CA21BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				48C38BF21BFCB7C500E178E2 /* AddVaccinDetailsViewController.m in Sources */,
+				6A167CA91BF5C3F8006795D3 /* SlideNavigationController.m in Sources */,
+				48C71A441BFD9CD30011BAEA /* FMDatabaseQueue.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A167C6A1BF5BB86006795D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A167C751BF5BB86006795D3 /* DogCareTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6A167C701BF5BB86006795D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A167C541BF5BB86006795D3 /* DogCare */;
+			targetProxy = 6A167C6F1BF5BB86006795D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6A167C621BF5BB86006795D3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A167C631BF5BB86006795D3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6A167C671BF5BB86006795D3 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A167C681BF5BB86006795D3 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6A167C761BF5BB86006795D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6A167C771BF5BB86006795D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6A167C791BF5BB86006795D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DogCare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A167C7A1BF5BB86006795D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DogCare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6A167C7C1BF5BB86006795D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DogCareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogCare.app/DogCare";
+			};
+			name = Debug;
+		};
+		6A167C7D1BF5BB86006795D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DogCareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogCare.app/DogCare";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A167C501BF5BB86006795D3 /* Build configuration list for PBXProject "DogCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A167C761BF5BB86006795D3 /* Debug */,
+				6A167C771BF5BB86006795D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A167C781BF5BB86006795D3 /* Build configuration list for PBXNativeTarget "DogCare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A167C791BF5BB86006795D3 /* Debug */,
+				6A167C7A1BF5BB86006795D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A167C7B1BF5BB86006795D3 /* Build configuration list for PBXNativeTarget "DogCareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A167C7C1BF5BB86006795D3 /* Debug */,
+				6A167C7D1BF5BB86006795D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A167C4D1BF5BB86006795D3 /* Project object */;
+}
