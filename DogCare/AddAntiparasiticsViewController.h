@@ -10,6 +10,8 @@
 
 @interface AddAntiparasiticsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *antiparasiticsScrollView;
+
 @property UIBarButtonItem *doneRtBarBtn;
 
 @end

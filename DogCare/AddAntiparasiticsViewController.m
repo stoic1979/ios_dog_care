@@ -19,6 +19,11 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
     
+    self.antiparasiticsScrollView.showsVerticalScrollIndicator = YES;
+    self.antiparasiticsScrollView.showsHorizontalScrollIndicator = YES;
+    self.antiparasiticsScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 800);
+    [self.view addSubview:self.antiparasiticsScrollView];
+    
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
     // Do any additional setup after loading the view.

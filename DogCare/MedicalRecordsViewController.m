@@ -64,13 +64,13 @@
             break;
             
         case 2:
-            cell.textLabel.text = @"VISITS AND SURGERIES";
-            cell.imageView.image = [UIImage imageNamed:@"visits:surgery-images.jpg"];
+            cell.textLabel.text = @"MEDICINE/ADMINISTRATIONS";
+            cell.imageView.image = [UIImage imageNamed:@"medical admistration-images.jpg"];
             break;
             
         case 3:
-            cell.textLabel.text = @"MEDICINE/ADMINISTRATIONS";
-            cell.imageView.image = [UIImage imageNamed:@"medical admistration-images.jpg"];
+            cell.textLabel.text = @"VISITS AND SURGERIES";
+            cell.imageView.image = [UIImage imageNamed:@"visits:surgery-images.jpg"];
             break;
         case 4:
             cell.textLabel.text = @"NOTES";

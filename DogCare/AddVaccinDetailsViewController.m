@@ -19,6 +19,11 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
     
+    self.vaccinScrollView.showsVerticalScrollIndicator = YES;
+    self.vaccinScrollView.showsHorizontalScrollIndicator = YES;
+    self.vaccinScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 700);
+    [self.view addSubview:self.vaccinScrollView];
+    
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
     // Do any additional setup after loading the view.

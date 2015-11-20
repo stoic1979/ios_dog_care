@@ -10,6 +10,8 @@
 
 @interface AddVisitsSurgeriesDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *visitsScrollView;
+
 @property UIBarButtonItem *doneRtBarBtn;
 
 @end

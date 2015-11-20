@@ -10,6 +10,8 @@
 
 @interface AddMedicineAdminDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *medScrollView;
+
 @property UIBarButtonItem *doneRtBarBtn;
 
 @end

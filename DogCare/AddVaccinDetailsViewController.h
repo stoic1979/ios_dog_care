@@ -10,6 +10,8 @@
 
 @interface AddVaccinDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *vaccinScrollView;
+
 @property UIBarButtonItem *doneRtBarBtn;
 
 @end

@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.scrollView.showsVerticalScrollIndicator = YES;
+    self.scrollView.showsHorizontalScrollIndicator = YES;
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 700);
+    [self.view addSubview:self.scrollView];
+    
     self.nameTF.delegate = self;
     self.birthDateTF.delegate = self;
     self.weightTF.delegate = self;

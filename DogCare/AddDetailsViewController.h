@@ -11,6 +11,7 @@
 
 @interface AddDetailsViewController : UIViewController<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *birthDateTF;
