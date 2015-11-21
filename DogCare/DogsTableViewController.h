@@ -11,5 +11,6 @@
 @interface DogsTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *dogsTableView;
+@property NSMutableArray *dogsTitlesArray;
 
 @end

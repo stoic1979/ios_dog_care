@@ -12,6 +12,8 @@
 #import "SlideNavigationContorllerAnimatorScale.h"
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
+#import "DogsTableViewController.h"
+#import "DBManager.h"
 
 @interface SIdeMenuViewController ()
 
@@ -71,8 +73,6 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    
-    
     switch (indexPath.row)
     {
         case 0:
@@ -110,36 +110,48 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-//                                                             bundle: nil];
-//    
-//    UIViewController *vc ;
-//    
-//    switch (indexPath.row)
-//    {
-//        case 0:
-//            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
-//            break;
-//            
-//        case 1:
-//            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
-//            break;
-//            
-//        case 2:
-//            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
-//            break;
-//            
-//        case 3:
-//            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-//            [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
-//            return;
-//            break;
-//            
-//    }
-//    
-//    [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-//                                                             withSlideOutAnimation:self.slideOutAnimationEnabled
-//                                                                     andCompletion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    DogsTableViewController *vc;
+    DBManager *dbManager = [[DBManager alloc]init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    switch (indexPath.row)
+    {
+        case 0:
+            vc = [storyboard instantiateViewControllerWithIdentifier: @"DogsTableViewControler"];
+//            [[SlideNavigationController sharedInstance] presentViewController:vc animated:YES completion:nil];
+            [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
+            break;
+            
+        case 1:
+            
+            NSLog(@"%@", [defaults objectForKey:@"dogsID"]);
+            [dbManager removeDogDetails:(int)[defaults objectForKey:@"dogsID"]];
+            [dbManager removeVaccinationDetails:(int)[defaults objectForKey:@"dogsID"]];
+            [dbManager removeAntiparasiticsDetails:(int)[defaults objectForKey:@"dogsID"]];
+            [dbManager removeMedAdminDetails:(int)[defaults objectForKey:@"dogsID"]];
+            [dbManager removeVisitsSurgDetails:(int)[defaults objectForKey:@"dogsID"]];
+            break;
+            
+        case 2:
+            NSLog(@"Settings");
+            break;
+            
+        case 3:
+            NSLog(@"Online Backup");
+            break;
+            
+        case 4:
+            NSLog(@"Backup/Restore");
+            break;
+            
+        case 5:
+            NSLog(@"Promo Code");
+            break;
+            
+    }
+    
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AddVaccinDetailsViewController.h"
+#import "DBManager.h"
 
 @interface AddVaccinDetailsViewController ()
 
@@ -31,7 +32,9 @@
 
 -(void)doneAction
 {
-    
+    DBManager *dbManager = [[DBManager alloc]init];
+    [dbManager createVaccinationDetailsTable];
+    [dbManager saveVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :1];
 }
 
 - (void)didReceiveMemoryWarning {

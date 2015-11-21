@@ -47,15 +47,43 @@
 
 //methods to fetch data from tables
 
--(void)fetchDogDetails:(NSString*)dogName :(NSString*)birthDate :(NSString*)weight :(NSString*)withers :(NSString*)breed :(NSString*)chip :(NSString*)sex :(int)dogInfoID;
-//
-//-(void)fetchVaccinationDetails:(NSString*)vaccinDate :(NSString*)VaccinNameType :(NSString*)veternarian :(NSString*)reminderDate :(NSString*)notes;
-//
-//-(void)fetchAntiparasiticsDetails:(NSString*)treatmentName :(NSString*)treatmentType :(NSString*)firstAdminstrtnDate :(NSString*)lastAdminstrtnDate :(NSString*)frequency :(NSString*)dose :(NSString*)veternarian :(NSString*)notes;
-//
-//-(void)fetchMedAdminDetails:(NSString*)medicationName :(NSString*)firstAdminstrtnDate :(NSString*)lastAdminstrtnDate :(NSString*)frequency :(NSString*)dose :(NSString*)veternarian :(NSString*)notes;
-//
-//-(void)fetchVisitsSurgDetails:(NSString*)visitDate :(NSString*)veternarian :(NSString*)nextInspectionDate :(NSString*)description;
+-(NSMutableArray*)fetchDogsTitles;
+
+-(int)fetchDogID:(NSString*)dogName;
+
+-(void)fetchDogDetails:(NSString*)dogName;
+
+-(void)fetchVaccinationDetails:(int)dogInfoID;
+
+-(void)fetchAntiparasiticsDetails:(int)dogInfoID;
+
+-(void)fetchMedAdminDetails:(int)dogInfoID;
+
+-(void)fetchVisitsSurgDetails:(int)dogInfoID;
+
+//methods to update data in tables
+
+-(void)updateDogDetails:(NSString*)dogName :(NSString*)birthDate :(NSString*)weight :(NSString*)withers :(NSString*)breed :(NSString*)chip :(NSString*)sex :(int)dogInfoID;
+
+-(void)updateVaccinationDetails:(NSString*)vaccinDate :(NSString*)VaccinNameType :(NSString*)veternarian :(NSString*)reminderDate :(NSString*)notes  :(int)dogInfoID;
+
+-(void)updateAntiparasiticsDetails:(NSString*)treatmentName :(NSString*)treatmentType :(NSString*)firstAdminstrtnDate :(NSString*)lastAdminstrtnDate :(NSString*)frequency :(NSString*)dose :(NSString*)veternarian :(NSString*)notes  :(int)dogInfoID;
+
+-(void)updateMedAdminDetails:(NSString*)medicationName :(NSString*)firstAdminstrtnDate :(NSString*)lastAdminstrtnDate :(NSString*)frequency :(NSString*)dose :(NSString*)veternarian :(NSString*)notes  :(int)dogInfoID;
+
+-(void)updateVisitsSurgDetails:(NSString*)visitDate :(NSString*)veternarian :(NSString*)nextInspectionDate :(NSString*)description :(int)dogInfoID;
+
+//methods to delete data from tables
+
+-(void)removeDogDetails:(int)dogInfoID;
+
+-(void)removeVaccinationDetails:(int)dogInfoID;
+
+-(void)removeAntiparasiticsDetails:(int)dogInfoID;
+
+-(void)removeMedAdminDetails:(int)dogInfoID;
+
+-(void)removeVisitsSurgDetails:(int)dogInfoID;
 
 
 @end

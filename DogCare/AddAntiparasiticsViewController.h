@@ -11,6 +11,14 @@
 @interface AddAntiparasiticsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *antiparasiticsScrollView;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsTreatmntNameTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsTreatmntTypeTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsFirstAdminstrtnTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsLastAdminstrtnTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsFreqncyTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsDoseTF;
+@property (weak, nonatomic) IBOutlet UITextField *antiprsitcsVeternrianTF;
+@property (weak, nonatomic) IBOutlet UITextView *antiprsitcsNotesTV;
 
 @property UIBarButtonItem *doneRtBarBtn;
 

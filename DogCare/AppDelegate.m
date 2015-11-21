@@ -21,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    DBManager *dbManager = [[DBManager alloc]init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:100 forKey:@"uniqueID"];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
@@ -30,21 +31,6 @@
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     [SlideNavigationController sharedInstance].menuRevealAnimationDuration = .18;
-    
-//    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidClose object:nil queue:nil usingBlock:^(NSNotification *note) {
-//        NSString *menu = note.userInfo[@"menu"];
-//        NSLog(@"Closed %@", menu);
-//    }];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidOpen object:nil queue:nil usingBlock:^(NSNotification *note) {
-//        NSString *menu = note.userInfo[@"menu"];
-//        NSLog(@"Opened %@", menu);
-//    }];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidReveal object:nil queue:nil usingBlock:^(NSNotification *note) {
-//        NSString *menu = note.userInfo[@"menu"];
-//        NSLog(@"Revealed %@", menu);
-//    }];
 
     
     return YES;

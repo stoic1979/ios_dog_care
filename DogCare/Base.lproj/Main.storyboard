@@ -154,7 +154,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1us-wN-PRb">
                                         <rect key="frame" x="260" y="81" width="33" height="30"/>
-                                        <state key="normal" image="480A348C-90C2-4621-875A-A09D43C13A86" backgroundImage="done-image.png">
+                                        <state key="normal" image="8D276898-DCAF-433E-B3C4-2CBBDE4CE3B1" backgroundImage="done-image.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -320,12 +320,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-DO-AwO">
                                 <rect key="frame" x="33" y="94" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="dogsCareNotes" destination="hI5-1u-fDO" id="85L-o4-Tu4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTB-Wb-KNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -441,7 +444,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFA-K2-KHM">
                                         <rect key="frame" x="22" y="206" width="51" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -450,7 +453,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="vaccinDateTF" destination="1XA-lI-BcF" id="9WD-3N-agR"/>
+                        <outlet property="vaccinNameTypeTF" destination="ivC-bW-Us5" id="eVy-Ka-ldu"/>
+                        <outlet property="vaccinNotesTV" destination="1KW-3H-zkG" id="EsK-jq-XmK"/>
+                        <outlet property="vaccinReminderDateTF" destination="vAw-qa-ndc" id="wpt-Kq-W3b"/>
                         <outlet property="vaccinScrollView" destination="li8-Bz-g0m" id="A7T-mi-Oju"/>
+                        <outlet property="vaccinVeternrianTF" destination="3k8-HF-GVU" id="DU6-qR-9wd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o97-92-XLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,7 +504,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-pl-Dhx">
                                         <rect key="frame" x="30" y="158" width="93" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -505,6 +513,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="nextInspectionTF" destination="eFz-5i-JEf" id="fcN-VB-aX5"/>
+                        <outlet property="visitDateTF" destination="srh-Rm-bNu" id="1kp-E4-hvs"/>
+                        <outlet property="visitVeternrianTF" destination="FAt-mq-UOJ" id="pnv-C1-nux"/>
+                        <outlet property="visitsDescriptionTV" destination="dz3-LE-zP8" id="PyJ-tE-PTw"/>
                         <outlet property="visitsScrollView" destination="L31-Jr-8xV" id="ohB-Bq-OXh"/>
                     </connections>
                 </viewController>
@@ -566,7 +578,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWp-k1-ofs">
                                         <rect key="frame" x="24" y="287" width="51" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -575,7 +587,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="firstAdmistrtnDateTF" destination="EUc-LX-RFa" id="cnx-OH-CQ4"/>
+                        <outlet property="lastAdmistrtnDateTF" destination="tTY-my-B7e" id="65b-tJ-pLW"/>
                         <outlet property="medScrollView" destination="BQr-qI-fnp" id="Ofc-fH-chX"/>
+                        <outlet property="medicationNameTF" destination="L7s-fN-22K" id="zLo-cW-UEc"/>
+                        <outlet property="medicineDoseTF" destination="8RI-MT-UsG" id="Rtc-Dg-6vG"/>
+                        <outlet property="medicineFreqncyTF" destination="utr-MF-hEf" id="BWY-1s-0Ra"/>
+                        <outlet property="medicineNotesTV" destination="r53-N2-AdI" id="JsH-SZ-ECS"/>
+                        <outlet property="medicineVeternrianTF" destination="g1l-k7-V8x" id="g5g-9V-xhl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJg-Nc-ZKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -636,7 +655,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yz-ig-Kyo">
                                         <rect key="frame" x="37" y="333" width="51" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Treatment Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zX5-hY-ngf">
@@ -651,6 +670,14 @@
                     </view>
                     <connections>
                         <outlet property="antiparasiticsScrollView" destination="mL0-9i-T96" id="6Yt-7j-WvI"/>
+                        <outlet property="antiprsitcsDoseTF" destination="xl5-vJ-Mtg" id="yFj-7g-c9q"/>
+                        <outlet property="antiprsitcsFirstAdminstrtnTF" destination="ENI-eo-Jgy" id="3Ws-vS-5WC"/>
+                        <outlet property="antiprsitcsFreqncyTF" destination="3HT-GZ-rUi" id="8m3-QQ-8Lc"/>
+                        <outlet property="antiprsitcsLastAdminstrtnTF" destination="YBI-b5-TV1" id="Sge-Wy-MyV"/>
+                        <outlet property="antiprsitcsNotesTV" destination="Alc-vf-QHT" id="i6g-K3-9ua"/>
+                        <outlet property="antiprsitcsTreatmntNameTF" destination="zX5-hY-ngf" id="qJT-Qz-XfK"/>
+                        <outlet property="antiprsitcsTreatmntTypeTF" destination="sf3-kW-AxI" id="o2R-Rp-jvr"/>
+                        <outlet property="antiprsitcsVeternrianTF" destination="Bij-C1-2u1" id="J8o-6X-kwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qk-04-U89" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,7 +789,7 @@
         <!--Dogs Table View Controller-->
         <scene sceneID="SNg-PY-4Ak">
             <objects>
-                <viewController id="wgn-QO-3cE" customClass="DogsTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DogsTableViewControler" id="wgn-QO-3cE" customClass="DogsTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i3m-fW-MHo"/>
                         <viewControllerLayoutGuide type="bottom" id="6xc-gX-ObS"/>
@@ -794,7 +821,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="480A348C-90C2-4621-875A-A09D43C13A86" width="600" height="266">
+        <image name="8D276898-DCAF-433E-B3C4-2CBBDE4CE3B1" width="600" height="266">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

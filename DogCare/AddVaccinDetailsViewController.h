@@ -11,6 +11,11 @@
 @interface AddVaccinDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *vaccinScrollView;
+@property (weak, nonatomic) IBOutlet UITextField *vaccinDateTF;
+@property (weak, nonatomic) IBOutlet UITextField *vaccinNameTypeTF;
+@property (weak, nonatomic) IBOutlet UITextField *vaccinVeternrianTF;
+@property (weak, nonatomic) IBOutlet UITextField *vaccinReminderDateTF;
+@property (weak, nonatomic) IBOutlet UITextView *vaccinNotesTV;
 
 @property UIBarButtonItem *doneRtBarBtn;
 

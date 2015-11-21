@@ -7,6 +7,7 @@
 //
 
 #import "DogsTableViewController.h"
+#import "DBManager.h"
 
 @interface DogsTableViewController ()
 
@@ -16,7 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dogsTitlesArray = [[NSMutableArray alloc]init];
+    
+    self.dogsTableView.delegate = self;
+    self.dogsTableView.dataSource = self;
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    DBManager *dbManager = [[DBManager alloc]init];
+    self.dogsTitlesArray = [dbManager fetchDogsTitles];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +40,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.dogsTitlesArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -39,7 +51,24 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
+    cell.textLabel.text = [self.dogsTitlesArray objectAtIndex:indexPath.row];
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = selectedCell.textLabel.text;
+    
+    DBManager *dbManager = [[DBManager alloc]init];
+    
+    [dbManager fetchDogDetails:cellText];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[dbManager fetchDogID:cellText] forKey:@"dogsID"];
+    
+    
 }
 
 

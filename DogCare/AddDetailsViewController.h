@@ -29,4 +29,6 @@
 @property NSDateFormatter *dateFormater;
 @property NSString *dateString;
 
+@property UIBarButtonItem *doneRtBarBtn;
+
 @end

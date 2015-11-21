@@ -10,4 +10,6 @@
 
 @interface NotesViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *dogsCareNotes;
+
 @end

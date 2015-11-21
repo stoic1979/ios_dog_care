@@ -7,6 +7,7 @@
 //
 
 #import "AddDetailsViewController.h"
+#import "DBManager.h"
 
 @interface AddDetailsViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
+    
+    self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(detailsSaveAction)];
+    self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+
     
     self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.showsHorizontalScrollIndicator = YES;
@@ -30,8 +37,6 @@
     self.breedTF.delegate = self;
     self.chipTF.delegate = self;
     self.genderTF.delegate = self;
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
     
     self.datesView = [[UIView alloc]initWithFrame:CGRectMake(20, 200, 375, 200)];
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -82,6 +87,36 @@
     self.datesView.hidden = YES;
 }
 
+-(void)detailsSaveAction
+{
+    DBManager *dbManager = [[DBManager alloc]init];
+    NSMutableArray *array = [dbManager fetchDogsTitles];
+    
+    int duplicateCount = 0;
+    NSString *string = self.nameTF.text;
+    for (int i = 0; i < array.count; ++i)
+    {
+        if ([string isEqualToString:[array objectAtIndex:i]])
+        {
+            NSLog(@"Duplicate");
+            duplicateCount++;
+        }
+        
+    }
+    if(duplicateCount == 0)
+    {
+        [dbManager createDogDetailsTable];
+        [dbManager saveDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text];
+    }
+    else{
+        NSLog(@"Duplicate is there cannot saved");
+    }
+
+    
+    
+    
+    
+}
 
 
 
