@@ -12,6 +12,7 @@
 #import "MemoViewController.h"
 #import "MedicalRecordsViewController.h"
 #import "VeterinariesViewController.h"
+#import "ShowDetailsViewController.h"
 
 @interface HomeViewController ()
 
@@ -21,12 +22,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     self.homeTableView.delegate = self;
     self.homeTableView.dataSource = self;
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    [defaults setObject:@"add" forKey:@"AddOrUpdate"];
+    
+    self.dogNameLabel.text = [defaults objectForKey:@"dogTitle"];
+    self.dogBithDateLabel.text = [defaults objectForKey:@"dogDOB"];
 }
 
 #pragma mark - SlideNavigationController Methods -
@@ -61,17 +70,17 @@
     {
         case 0:
             cell.textLabel.text = @"MEMO";
-            cell.imageView.image = [UIImage imageNamed:@"memo-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"memmo-image.png"];
             break;
             
         case 1:
             cell.textLabel.text = @"MEDICAL RECORDS";
-            cell.imageView.image = [UIImage imageNamed:@"medical_records-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"medicalrec-image.png"];
             break;
             
         case 2:
             cell.textLabel.text = @"VETERINARIES";
-            cell.imageView.image = [UIImage imageNamed:@"veterinaries-images.png"];
+            cell.imageView.image = [UIImage imageNamed:@"vetrenary-image.png"];
             break;
             
     }
@@ -111,4 +120,21 @@
     [self.navigationController pushViewController:addDetailsVC animated:YES];
     
 }
+
+- (IBAction)showDogDtlsAction:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"add" forKey:@"AddOrUpdate"];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ShowDetailsViewController *dogDetailsVC = [storyboard instantiateViewControllerWithIdentifier:@"ShowDetailsViewControler"];
+    [self.navigationController pushViewController:dogDetailsVC animated:YES];
+    
+}
+
+
+
+
+
+
 @end

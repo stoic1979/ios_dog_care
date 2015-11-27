@@ -18,9 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
-    
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(detailsSaveAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
 
@@ -45,6 +42,21 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *string = [defaults objectForKey:@"AddOrUpdate"];
+    if([string isEqualToString:@"edit"])
+    {
+        self.nameTF.text = [defaults objectForKey:@"dogTitle"];
+        self.birthDateTF.text = [defaults objectForKey:@"dogDOB"];
+        self.weightTF.text = [defaults objectForKey:@"dogWeight"];
+        self.withersTF.text = [defaults objectForKey:@"dogWither"];
+        self.breedTF.text = [defaults objectForKey:@"dogBreed"];
+        self.chipTF.text = [defaults objectForKey:@"dogChipCode"];
+        self.genderTF.text = [defaults objectForKey:@"dogGender"];
+    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -89,31 +101,40 @@
 
 -(void)detailsSaveAction
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *string = [defaults objectForKey:@"AddOrUpdate"];
     DBManager *dbManager = [[DBManager alloc]init];
-    NSMutableArray *array = [dbManager fetchDogsTitles];
     
-    int duplicateCount = 0;
-    NSString *string = self.nameTF.text;
-    for (int i = 0; i < array.count; ++i)
+    if([string isEqualToString:@"add"])
     {
-        if ([string isEqualToString:[array objectAtIndex:i]])
-        {
-            NSLog(@"Duplicate");
-            duplicateCount++;
-        }
+        NSMutableArray *array = [dbManager fetchDogsTitles];
         
+        int duplicateCount = 0;
+        NSString *string = self.nameTF.text;
+        for (int i = 0; i < array.count; ++i)
+        {
+            if ([string isEqualToString:[array objectAtIndex:i]])
+            {
+                NSLog(@"Duplicate");
+                duplicateCount++;
+            }
+            
+        }
+        if(duplicateCount == 0)
+        {
+            [dbManager createDogDetailsTable];
+            [dbManager saveDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text];
+            [dbManager fetchDogDetails:self.nameTF.text];
+            
+        }
+        else{
+            NSLog(@"Duplicate is there cannot saved");
+        }
     }
-    if(duplicateCount == 0)
+    else if ([string isEqualToString:@"edit"])
     {
-        [dbManager createDogDetailsTable];
-        [dbManager saveDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text];
+        [dbManager updateDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text :[defaults integerForKey:@"dogInfoId"]];
     }
-    else{
-        NSLog(@"Duplicate is there cannot saved");
-    }
-
-    
-    
     
     
 }

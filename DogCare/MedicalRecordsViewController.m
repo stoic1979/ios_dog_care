@@ -7,11 +7,8 @@
 //
 
 #import "MedicalRecordsViewController.h"
-#import "VaccinationsViewController.h"
-#import "AntiparasiticsViewController.h"
-#import "Medicine&AdminViewController.h"
-#import "Visits&SugeriesViewController.h"
 #import "NotesViewController.h"
+#import "AddMedicalRecordsTableViewController.h"
 
 @interface MedicalRecordsViewController ()
 
@@ -21,8 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
     
     self.medicalTableView.delegate = self;
     self.medicalTableView.dataSource = self;
@@ -55,26 +50,26 @@
     {
         case 0:
             cell.textLabel.text = @"VACCINATIONS";
-            cell.imageView.image = [UIImage imageNamed:@"vaccination-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"vaccination-image.png"];
             break;
             
         case 1:
             cell.textLabel.text = @"ANTIPARASITICS";
-            cell.imageView.image = [UIImage imageNamed:@"antiparacitics-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"antiparastic-image.png"];
             break;
             
         case 2:
             cell.textLabel.text = @"MEDICINE/ADMINISTRATIONS";
-            cell.imageView.image = [UIImage imageNamed:@"medical admistration-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"medicine-image.png"];
             break;
             
         case 3:
             cell.textLabel.text = @"VISITS AND SURGERIES";
-            cell.imageView.image = [UIImage imageNamed:@"visits:surgery-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"visits-image.png"];
             break;
         case 4:
             cell.textLabel.text = @"NOTES";
-            cell.imageView.image = [UIImage imageNamed:@"notes-images.jpg"];
+            cell.imageView.image = [UIImage imageNamed:@"notes-image.png"];
             break;
             
     }
@@ -84,27 +79,30 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    AddMedicalRecordsTableViewController *addMedRcrdsVC = [storyboard instantiateViewControllerWithIdentifier:@"AddMedicalRecordsTableViewControler"];
     
     if(indexPath.row == 0)
     {
-        VaccinationsViewController *memoVC = [storyboard instantiateViewControllerWithIdentifier:@"VaccinationsViewControler"];
-        [self.navigationController pushViewController:memoVC animated:YES];
+        [defaults setObject:@"vaccination" forKey:@"MedRecrds"];
+        [self.navigationController pushViewController:addMedRcrdsVC animated:YES];
     }
     else if (indexPath.row == 1)
     {
-        AntiparasiticsViewController *antiparasiticsVC = [storyboard instantiateViewControllerWithIdentifier:@"AntiparasiticsViewControler"];
-        [self.navigationController pushViewController:antiparasiticsVC animated:YES];
+        [defaults setObject:@"antiprstics" forKey:@"MedRecrds"];
+        [self.navigationController pushViewController:addMedRcrdsVC animated:YES];
     }
     else if (indexPath.row == 2)
     {
-        Medicine_AdminViewController *medicineAdminstrationVC = [storyboard instantiateViewControllerWithIdentifier:@"Medicine_AdminViewControler"];
-        [self.navigationController pushViewController:medicineAdminstrationVC animated:YES];
+        [defaults setObject:@"medcneAdmintrtn" forKey:@"MedRecrds"];
+        [self.navigationController pushViewController:addMedRcrdsVC animated:YES];
     }
     else if (indexPath.row == 3)
     {
-        Visits_SugeriesViewController *visitsSurgeriesVC = [storyboard instantiateViewControllerWithIdentifier:@"Visits_SugeriesViewControler"];
-        [self.navigationController pushViewController:visitsSurgeriesVC animated:YES];
+        [defaults setObject:@"visitsSurgries" forKey:@"MedRecrds"];
+        [self.navigationController pushViewController:addMedRcrdsVC animated:YES];
     }
     else if (indexPath.row == 4)
     {

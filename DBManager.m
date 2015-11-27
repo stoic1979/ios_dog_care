@@ -179,27 +179,6 @@
 }
 
 
--(int)fetchDogID:(NSString*)dogName
-{
-    
-    int dogId = 0;
-    FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
-    [database open];
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM DogsData WHERE dogName=?",dogName];
-    
-    while([results next]) {
-        
-        dogId = [results intForColumn:@"dog_id"];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setInteger:dogId forKey:@"dogInfoId"];
-        
-    }
-    [database close];
-    return dogId;
-}
-
-
 -(void)fetchDogDetails:(NSString*)dogName
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
@@ -208,6 +187,7 @@
     
     while([results next]) {
         
+        NSLog(@"%d",[results intForColumn:@"dog_id"]);
         NSLog(@"%@",[results stringForColumn:@"dogName"]);
         NSLog(@"%@",[results stringForColumn:@"birthDate"]);
         NSLog(@"%@",[results stringForColumn:@"weight"]);
@@ -215,17 +195,46 @@
         NSLog(@"%@",[results stringForColumn:@"breed"]);
         NSLog(@"%@",[results stringForColumn:@"chipCode"]);
         NSLog(@"%@",[results stringForColumn:@"sex"]);
-        int dogId = [results intForColumn:@"dog_id"];
+        
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setInteger:dogId forKey:@"dogInfoId"];
+        
+        [defaults setInteger:[results intForColumn:@"dog_id"] forKey:@"dogInfoId"];
+        [defaults setObject:[results stringForColumn:@"dogName"] forKey:@"dogTitle"];
+        [defaults setObject:[results stringForColumn:@"birthDate"] forKey:@"dogDOB"];
+        [defaults setObject:[results stringForColumn:@"weight"] forKey:@"dogWeight"];
+        [defaults setObject:[results stringForColumn:@"withers"] forKey:@"dogWither"];
+        [defaults setObject:[results stringForColumn:@"chipCode"] forKey:@"dogChipCode"];
+        [defaults setObject:[results stringForColumn:@"breed"] forKey:@"dogBreed"];
+        [defaults setObject:[results stringForColumn:@"sex"] forKey:@"dogGender"];
 
     }
     [database close];
+    
 }
 
--(void)fetchVaccinationDetails:(int)dogInfoID
+-(NSMutableArray*)fetchVaccinationTitles
 {
+    NSMutableArray *vaccinTitles = [[NSMutableArray alloc]init];
+    FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
+    [database open];
+    FMResultSet *results = [database executeQuery:@"SELECT VaccinNameType FROM VaccinationData"];
+    
+    while([results next]) {
+        
+        [vaccinTitles addObject:[results stringForColumn:@"VaccinNameType"]];
+        
+    }
+    [database close];
+    
+    
+    return vaccinTitles;
+}
+
+-(NSMutableArray*)fetchVaccinationDetails:(int)dogInfoID
+{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
     FMResultSet *results = [database executeQuery:@"SELECT * FROM VaccinationData WHERE vaccin_dog_id=?",dogInfoID];
@@ -238,12 +247,44 @@
         NSLog(@"%@",[results stringForColumn:@"reminderDate"]);
         NSLog(@"%@",[results stringForColumn:@"notes"]);
         
+        [resultArray addObject:[results stringForColumn:@"vaccinDate"]];
+        [resultArray addObject:[results stringForColumn:@"VaccinNameType"]];
+        [resultArray addObject:[results stringForColumn:@"veternarian"]];
+        [resultArray addObject:[results stringForColumn:@"reminderDate"]];
+        [resultArray addObject:[results stringForColumn:@"notes"]];
+        
+        
     }
+    
     [database close];
+    
+    NSLog(@"%@", resultArray);
+    
+    return resultArray;
 }
 
--(void)fetchAntiparasiticsDetails:(int)dogInfoID
+-(NSMutableArray*)fetchAntiprsticsTitles
 {
+    NSMutableArray *antiprsticTitles = [[NSMutableArray alloc]init];
+    FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
+    [database open];
+    FMResultSet *results = [database executeQuery:@"SELECT treatmentName FROM AntiParasiticsData"];
+    
+    while([results next]) {
+        
+        [antiprsticTitles addObject:[results stringForColumn:@"treatmentName"]];
+        
+    }
+    [database close];
+    
+    
+    return antiprsticTitles;
+}
+
+-(NSMutableArray*)fetchAntiparasiticsDetails:(int)dogInfoID
+{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
     FMResultSet *results = [database executeQuery:@"SELECT * FROM AntiParasiticsData WHERE antipartics_dog_id=?",dogInfoID];
@@ -259,12 +300,46 @@
         NSLog(@"%@",[results stringForColumn:@"veternarian"]);
         NSLog(@"%@",[results stringForColumn:@"notes"]);
         
+        [resultArray addObject:[results stringForColumn:@"treatmentName"]];
+        [resultArray addObject:[results stringForColumn:@"treatmentType"]];
+        [resultArray addObject:[results stringForColumn:@"firstAdminstrtnDate"]];
+        [resultArray addObject:[results stringForColumn:@"lastAdminstrtnDate"]];
+        [resultArray addObject:[results stringForColumn:@"frequency"]];
+        [resultArray addObject:[results stringForColumn:@"dose"]];
+        [resultArray addObject:[results stringForColumn:@"veternarian"]];
+        [resultArray addObject:[results stringForColumn:@"notes"]];
+        
     }
     [database close];
+    
+    NSLog(@"%@", resultArray);
+    
+    return resultArray;
+    
 }
 
--(void)fetchMedAdminDetails:(int)dogInfoID
+-(NSMutableArray*)fetchMedicineAdminTitles
 {
+    NSMutableArray *medAdmnrtnTitles = [[NSMutableArray alloc]init];
+    FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
+    [database open];
+    FMResultSet *results = [database executeQuery:@"SELECT medicationName FROM MedicineAdministrtnData"];
+    
+    while([results next]) {
+        
+        [medAdmnrtnTitles addObject:[results stringForColumn:@"medicationName"]];
+        
+    }
+    [database close];
+    
+    
+    return medAdmnrtnTitles;
+}
+
+-(NSMutableArray*)fetchMedAdminDetails:(int)dogInfoID
+{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
     FMResultSet *results = [database executeQuery:@"SELECT * FROM MedicineAdministrtnData WHERE medAdmin_dog_id=?",dogInfoID];
@@ -279,12 +354,45 @@
         NSLog(@"%@",[results stringForColumn:@"veternarian"]);
         NSLog(@"%@",[results stringForColumn:@"notes"]);
         
+        [resultArray addObject:[results stringForColumn:@"medicationName"]];
+        [resultArray addObject:[results stringForColumn:@"firstAdminstrtnDate"]];
+        [resultArray addObject:[results stringForColumn:@"lastAdminstrtnDate"]];
+        [resultArray addObject:[results stringForColumn:@"frequency"]];
+        [resultArray addObject:[results stringForColumn:@"dose"]];
+        [resultArray addObject:[results stringForColumn:@"veternarian"]];
+        [resultArray addObject:[results stringForColumn:@"notes"]];
+        
     }
     [database close];
+    
+    NSLog(@"%@", resultArray);
+    
+    return resultArray;
+    
 }
 
--(void)fetchVisitsSurgDetails:(int)dogInfoID
+-(NSMutableArray*)fetchVisitsSurgriesDates
 {
+    NSMutableArray *visitDates = [[NSMutableArray alloc]init];
+    FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
+    [database open];
+    FMResultSet *results = [database executeQuery:@"SELECT visitDate FROM VisitsSurgriesData"];
+    
+    while([results next]) {
+        
+        [visitDates addObject:[results stringForColumn:@"visitDate"]];
+        
+    }
+    [database close];
+    
+    
+    return visitDates;
+}
+
+-(NSMutableArray*)fetchVisitsSurgDetails:(int)dogInfoID
+{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
     FMResultSet *results = [database executeQuery:@"SELECT * FROM VisitsSurgriesData WHERE visitsSurg_dog_id=?",dogInfoID];
@@ -296,8 +404,21 @@
         NSLog(@"%@",[results stringForColumn:@"nextInspectionDate"]);
         NSLog(@"%@",[results stringForColumn:@"description"]);
         
+        [resultArray addObject:[results stringForColumn:@"visitDate"]];
+        [resultArray addObject:[results stringForColumn:@"veternarian"]];
+        [resultArray addObject:[results stringForColumn:@"nextInspectionDate"]];
+        [resultArray addObject:[results stringForColumn:@"description"]];
+        
     }
+    
+
     [database close];
+    
+    
+    NSLog(@"%@", resultArray);
+    
+    return resultArray;
+    
 }
 
 
@@ -319,6 +440,7 @@
     {
         NSLog(@"Error occured while Updating");
     }
+    
 }
 
 -(void)updateVaccinationDetails:(NSString *)vaccinDate :(NSString *)VaccinNameType :(NSString *)veternarian :(NSString *)reminderDate :(NSString *)notes :(int)dogInfoID
@@ -398,16 +520,19 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
+    
+    NSLog(@"%d", dogInfoID);
+    
     BOOL isDeleted = [database executeUpdate:@"DELETE FROM DogsData WHERE dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isDeleted)
     {
-        NSLog(@"Deleted Successfully");
+        NSLog(@"*********** Deleted Successfully **********");
     }
     else
     {
-        NSLog(@"Error occured while Deleting");
+        NSLog(@"*********** Error occured while Deleting **********");
     }
 }
 
@@ -415,16 +540,16 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isDeleted = [database executeUpdate:@"DELETE * FROM VaccinationData WHERE vaccin_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
+    BOOL isDeleted = [database executeUpdate:@"DELETE FROM VaccinationData WHERE vaccin_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isDeleted)
     {
-        NSLog(@"Deleted Successfully");
+        NSLog(@"*********** Deleted Successfully **********");
     }
     else
     {
-        NSLog(@"Error occured while Deleting");
+        NSLog(@"*********** Error occured while Deleting **********");
     }
 }
 
@@ -432,16 +557,16 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isDeleted = [database executeUpdate:@"DELETE * FROM AntiParasiticsData WHERE antipartics_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
+    BOOL isDeleted = [database executeUpdate:@"DELETE FROM AntiParasiticsData WHERE antipartics_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isDeleted)
     {
-        NSLog(@"Deleted Successfully");
+        NSLog(@"*********** Deleted Successfully **********");
     }
     else
     {
-        NSLog(@"Error occured while Deleting");
+        NSLog(@"*********** Error occured while Deleting **********");
     }
 }
 
@@ -449,16 +574,16 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isDeleted = [database executeUpdate:@"DELETE * FROM MedicineAdministrtnData WHERE medAdmin_dog_id=?"  ,[NSNumber numberWithInt:dogInfoID], nil];
+    BOOL isDeleted = [database executeUpdate:@"DELETE FROM MedicineAdministrtnData WHERE medAdmin_dog_id=?"  ,[NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isDeleted)
     {
-        NSLog(@"Deleted Successfully");
+        NSLog(@"*********** Deleted Successfully **********");
     }
     else
     {
-        NSLog(@"Error occured while Deleting");
+        NSLog(@"*********** Error occured while Deleting **********");
     }
 }
 
@@ -466,16 +591,16 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isDeleted = [database executeUpdate:@"DELETE * FROM VisitsSurgriesData WHERE visitsSurg_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
+    BOOL isDeleted = [database executeUpdate:@"DELETE FROM VisitsSurgriesData WHERE visitsSurg_dog_id=?" ,[NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isDeleted)
     {
-        NSLog(@"Deleted Successfully");
+        NSLog(@"*********** Deleted Successfully **********");
     }
     else
     {
-        NSLog(@"Error occured while Deleting");
+        NSLog(@"*********** Error occured while Deleting **********");
     }
 }
 

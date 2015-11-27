@@ -32,24 +32,23 @@
 {
     [super viewDidLoad];
     
-//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"leftMenu.jpg"]]];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     
-    self.tableView.separatorColor = [UIColor lightGrayColor];
+//    [[SlideNavigationController sharedInstance].navigationBar.barTintColor];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightMenu.jpg"]];
-    self.tableView.backgroundView = imageView;
+//    self.tableView.separatorColor = [UIColor lightGrayColor];
+//    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightMenu.jpg"]];
+//    self.tableView.backgroundView = imageView;
 }
 
 #pragma mark - UITableView Delegate & Datasrouce -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -77,29 +76,36 @@
     {
         case 0:
             cell.textLabel.text = @"Dogs";
+            cell.imageView.image = [UIImage imageNamed:@"dog47.png"];
             break;
         case 1:
             cell.textLabel.text = @"Remove";
+            cell.imageView.image = [UIImage imageNamed:@"remove7.png"];
             break;
             
         case 2:
             cell.textLabel.text = @"Settings";
+            cell.imageView.image = [UIImage imageNamed:@"settings39.png"];
             break;
             
         case 3:
             cell.textLabel.text = @"Online Backup";
+            cell.imageView.image = [UIImage imageNamed:@"backup.png"];
             break;
             
         case 4:
             cell.textLabel.text = @"Backup/Restore";
+            cell.imageView.image = [UIImage imageNamed:@"restore174.png"];
             break;
             
         case 5:
             cell.textLabel.text = @"Promo Code";
+            cell.imageView.image = [UIImage imageNamed:@"promocode70.png"];
             break;
             
         case 6:
             cell.textLabel.text = @"Info";
+            cell.imageView.image = [UIImage imageNamed:@"info44.png"];
             break;
     }
     
@@ -120,18 +126,20 @@
     {
         case 0:
             vc = [storyboard instantiateViewControllerWithIdentifier: @"DogsTableViewControler"];
-//            [[SlideNavigationController sharedInstance] presentViewController:vc animated:YES completion:nil];
             [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
             break;
             
         case 1:
             
-            NSLog(@"%@", [defaults objectForKey:@"dogsID"]);
-            [dbManager removeDogDetails:(int)[defaults objectForKey:@"dogsID"]];
-            [dbManager removeVaccinationDetails:(int)[defaults objectForKey:@"dogsID"]];
-            [dbManager removeAntiparasiticsDetails:(int)[defaults objectForKey:@"dogsID"]];
-            [dbManager removeMedAdminDetails:(int)[defaults objectForKey:@"dogsID"]];
-            [dbManager removeVisitsSurgDetails:(int)[defaults objectForKey:@"dogsID"]];
+            NSLog(@"%d",[defaults integerForKey:@"dogInfoId"]);
+            
+            int dogId = [defaults integerForKey:@"dogInfoId"];
+            
+            [dbManager removeDogDetails:dogId];
+            [dbManager removeVaccinationDetails:dogId];
+            [dbManager removeAntiparasiticsDetails:dogId];
+            [dbManager removeMedAdminDetails:dogId];
+            [dbManager removeVisitsSurgDetails:dogId];
             break;
             
         case 2:
@@ -148,6 +156,10 @@
             
         case 5:
             NSLog(@"Promo Code");
+            break;
+            
+        case 6:
+            NSLog(@"Info");
             break;
             
     }

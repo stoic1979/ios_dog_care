@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddMedicineAdminDetailsViewController : UIViewController
+@interface AddMedicineAdminDetailsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *medScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *medicationNameTF;
@@ -20,5 +20,18 @@
 @property (weak, nonatomic) IBOutlet UITextView *medicineNotesTV;
 
 @property UIBarButtonItem *doneRtBarBtn;
+
+@property NSMutableArray *medAdmitrnAry;
+
+@property (weak, nonatomic) IBOutlet UIButton *frstAdmntrnDateCalndr;
+@property (weak, nonatomic) IBOutlet UIButton *lastAdmntrnDateCalndr;
+@property (weak, nonatomic) IBOutlet UIButton *frstAdmntrnDateSelctn;
+@property (weak, nonatomic) IBOutlet UIButton *lastAdmntrnDateSelctn;
+
+
+- (IBAction)calnderBtnAction:(id)sender;
+- (IBAction)dateSelectBtnAction:(id)sender;
+
+
 
 @end

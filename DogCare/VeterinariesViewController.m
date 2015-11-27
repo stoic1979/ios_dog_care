@@ -19,7 +19,6 @@
     
     self.veterinariesTableView.delegate = self;
     self.veterinariesTableView.dataSource = self;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightMenu.jpg"]]];
 
     // Do any additional setup after loading the view.
 }
@@ -44,7 +43,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    cell.imageView.image = [UIImage imageNamed:@"veterinaries-images.png"];
+    cell.imageView.image = [UIImage imageNamed:@"vetrenary-image.png"];
     
     switch (indexPath.row)
     {

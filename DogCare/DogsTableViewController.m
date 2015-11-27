@@ -65,9 +65,6 @@
     
     [dbManager fetchDogDetails:cellText];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[dbManager fetchDogID:cellText] forKey:@"dogsID"];
-    
     
 }
 

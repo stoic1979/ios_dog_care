@@ -11,6 +11,12 @@
 
 @interface HomeViewController : UIViewController<SlideNavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 - (IBAction)addDetailsAction:(id)sender;
+- (IBAction)showDogDtlsAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+
+@property (weak, nonatomic) IBOutlet UILabel *dogNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dogBithDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *dogPicImgView;
+
 
 @end

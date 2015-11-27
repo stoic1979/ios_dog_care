@@ -49,17 +49,23 @@
 
 -(NSMutableArray*)fetchDogsTitles;
 
--(int)fetchDogID:(NSString*)dogName;
+-(NSMutableArray*)fetchVaccinationTitles;
+
+-(NSMutableArray*)fetchAntiprsticsTitles;
+
+-(NSMutableArray*)fetchMedicineAdminTitles;
+
+-(NSMutableArray*)fetchVisitsSurgriesDates;
 
 -(void)fetchDogDetails:(NSString*)dogName;
 
--(void)fetchVaccinationDetails:(int)dogInfoID;
+-(NSMutableArray*)fetchVaccinationDetails:(int)dogInfoID;
 
--(void)fetchAntiparasiticsDetails:(int)dogInfoID;
+-(NSMutableArray*)fetchAntiparasiticsDetails:(int)dogInfoID;
 
--(void)fetchMedAdminDetails:(int)dogInfoID;
+-(NSMutableArray*)fetchMedAdminDetails:(int)dogInfoID;
 
--(void)fetchVisitsSurgDetails:(int)dogInfoID;
+-(NSMutableArray*)fetchVisitsSurgDetails:(int)dogInfoID;
 
 //methods to update data in tables
 

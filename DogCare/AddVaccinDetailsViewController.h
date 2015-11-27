@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddVaccinDetailsViewController : UIViewController
+@interface AddVaccinDetailsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *vaccinScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *vaccinDateTF;
@@ -18,5 +18,23 @@
 @property (weak, nonatomic) IBOutlet UITextView *vaccinNotesTV;
 
 @property UIBarButtonItem *doneRtBarBtn;
+
+@property NSMutableArray *vaccinDtlsAry;
+
+@property (weak, nonatomic) IBOutlet UIButton *vaccintnDateCalndr;
+@property (weak, nonatomic) IBOutlet UIButton *remndrDateCalndr;
+@property (weak, nonatomic) IBOutlet UIButton *vaccintnDateSelctn;
+@property (weak, nonatomic) IBOutlet UIButton *remndrDateSelctn;
+
+
+- (IBAction)calnderBtnAction:(id)sender;
+- (IBAction)dateSelectBtnAction:(id)sender;
+
+
+@property UIView *datesView;
+@property UIDatePicker *datePicker;
+@property NSDateFormatter *dateFormater;
+@property NSString *dateString;
+
 
 @end

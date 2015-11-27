@@ -11,5 +11,6 @@
 @interface MedicalRecordsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *medicalTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *dogPicImgeView;
 
 @end
