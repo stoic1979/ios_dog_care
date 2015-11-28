@@ -22,7 +22,7 @@
     
     self.vaccinScrollView.showsVerticalScrollIndicator = YES;
     self.vaccinScrollView.showsHorizontalScrollIndicator = YES;
-    self.vaccinScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 700);
+    self.vaccinScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 750);
     [self.view addSubview:self.vaccinScrollView];
     
     self.vaccinDateTF.delegate = self;
@@ -33,10 +33,20 @@
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
     
+    self.vaccinNotesTV.text = @"Enter Notes";
+    self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
+    self.vaccinNotesTV.delegate = self;
     
-    self.datesView = [[UIView alloc]initWithFrame:CGRectMake(20, 200, 375, 200)];
+    self.dateResult = 0;
+    
+    self.datesView = [[UIView alloc]init];
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -53,6 +63,8 @@
     {
         self.vaccinDtlsAry = [dbManager fetchVaccinationDetails:[defaults integerForKey:@"dogInfoId"]];
         
+        NSLog(@"%@",self.vaccinDtlsAry);
+        
         self.vaccinDateTF.text = [self.vaccinDtlsAry objectAtIndex:0];
         self.vaccinNameTypeTF.text = [self.vaccinDtlsAry objectAtIndex:1];
         self.vaccinVeternrianTF.text = [self.vaccinDtlsAry objectAtIndex:2];
@@ -62,22 +74,77 @@
     
 }
 
+#pragma mark - Adding Place Holder for TextView
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.vaccinNotesTV.text = @"";
+    self.vaccinNotesTV.textColor = [UIColor blackColor];
+    return YES;
+}
+
+- (BOOL) textViewShouldEndEditing:(UITextView *)textView
+{
+    if(self.vaccinNotesTV.text.length == 0){
+        self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
+        self.vaccinNotesTV.text = @"Enter Notes";
+        [self.vaccinNotesTV resignFirstResponder];
+    }
+    return YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView
+{
+    
+    if(self.vaccinNotesTV.text.length == 0){
+        self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
+        self.vaccinNotesTV.text = @"Enter Notes";
+        [self.vaccinNotesTV resignFirstResponder];
+    }
+}
+
+#pragma mark - HIDING KEYBOARD
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
--(void)doneAction
+-(void)dismissKeyboard
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    DBManager *dbManager = [[DBManager alloc]init];
-    [dbManager createVaccinationDetailsTable];
-    [dbManager saveVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    for (UIView *view in self.view.subviews)
+        [view resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 
+#pragma mark - NavigationBar button to Save or Update
+
+-(void)doneAction
+{
+    
+    if([self.vaccinDateTF.text isEqualToString:@""] ||
+       [self.vaccinNameTypeTF.text isEqualToString:@""] ||
+       [self.vaccinVeternrianTF.text isEqualToString:@""] ||
+       [self.vaccinReminderDateTF.text isEqualToString:@""] ||
+       [self.vaccinNotesTV.text isEqualToString:@""])
+    {
+        UIAlertView *alrtView = [[UIAlertView alloc]initWithTitle:@"Enter Vaccin Details" message:@"Please enter all the fields properly" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alrtView show];
+    }
+    else
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        DBManager *dbManager = [[DBManager alloc]init];
+        [dbManager createVaccinationDetailsTable];
+        [dbManager saveVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    }
+    
+}
+
+#pragma mark - DatePicker for Date selection
 
 -(void)selectedDateAction
 {
@@ -85,8 +152,14 @@
     self.dateFormater = [[NSDateFormatter alloc] init];
     [self.dateFormater setDateFormat:@"dd-MM-yyyy"];
     NSString *formatedDate = [self.dateFormater stringFromDate:self.datePicker.date];
-    self.vaccinDateTF.text = formatedDate;
-    self.vaccinReminderDateTF.text = formatedDate;
+    if(self.dateResult == 1)
+    {
+        self.vaccinDateTF.text = formatedDate;
+    }
+    else if(self.dateResult == 2)
+    {
+        self.vaccinReminderDateTF.text = formatedDate;
+    }
     
 }
 
@@ -97,11 +170,13 @@
     
     if(sender == self.vaccintnDateCalndr)
     {
-        self.datesView.frame = CGRectMake(20, 200, 375, 200);
+        self.datesView.frame = CGRectMake(20, 80, 375, 200);
+        self.dateResult = 1;
     }
     else if(sender == self.remndrDateCalndr)
     {
-        self.datesView.frame = CGRectMake(20, 200, 375, 200);
+        self.datesView.frame = CGRectMake(20, 210, 375, 200);
+        self.dateResult = 2;
     }
     
     self.datePicker.hidden = NO;

@@ -22,7 +22,7 @@
     
     self.antiparasiticsScrollView.showsVerticalScrollIndicator = YES;
     self.antiparasiticsScrollView.showsHorizontalScrollIndicator = YES;
-    self.antiparasiticsScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 800);
+    self.antiparasiticsScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 850);
     [self.view addSubview:self.antiparasiticsScrollView];
     
     self.antiprsitcsTreatmntNameTF.delegate = self;
@@ -33,8 +33,24 @@
     self.antiprsitcsDoseTF.delegate = self;
     self.antiprsitcsVeternrianTF.delegate =self;
     
+    
+    self.antiprsitcsNotesTV.text = @"Enter Notes";
+    self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
+    self.antiprsitcsNotesTV.delegate = self;
+    
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+    
+    self.dateResult = 0;
+    
+    self.datesView = [[UIView alloc]init];
+    self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view.
 }
@@ -64,33 +80,133 @@
 }
 
 
+#pragma mark - Adding Place Holder for TextView
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.antiprsitcsNotesTV.text = @"";
+    self.antiprsitcsNotesTV.textColor = [UIColor blackColor];
+    return YES;
+}
+
+- (BOOL) textViewShouldEndEditing:(UITextView *)textView
+{
+    if(self.antiprsitcsNotesTV.text.length == 0){
+        self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
+        self.antiprsitcsNotesTV.text = @"Enter Notes";
+        [self.antiprsitcsNotesTV resignFirstResponder];
+    }
+    return YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView
+{
+    
+    if(self.antiprsitcsNotesTV.text.length == 0){
+        self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
+        self.antiprsitcsNotesTV.text = @"Enter Notes";
+        [self.antiprsitcsNotesTV resignFirstResponder];
+    }
+}
+
+#pragma mark - HIDING KEYBOARD
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
+-(void)dismissKeyboard
+{
+    for (UIView *view in self.view.subviews)
+        [view resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+
+
+#pragma mark - NavigationBar button to Save or Update
+
 -(void)doneAction
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    DBManager *dbManager = [[DBManager alloc]init];
-    [dbManager createAntiparasiticsDetailsTable];
-    [dbManager saveAntiparasiticsDetails:self.antiprsitcsTreatmntNameTF.text :self.antiprsitcsTreatmntTypeTF.text :self.antiprsitcsFirstAdminstrtnTF.text :self.antiprsitcsLastAdminstrtnTF.text :self.antiprsitcsFreqncyTF.text :self.antiprsitcsDoseTF.text :self.antiprsitcsVeternrianTF.text :self.antiprsitcsNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    if([self.antiprsitcsTreatmntTypeTF.text isEqualToString:@""] ||
+       [self.antiprsitcsTreatmntNameTF.text isEqualToString:@""] ||
+       [self.antiprsitcsFirstAdminstrtnTF.text isEqualToString:@""] ||
+       [self.antiprsitcsLastAdminstrtnTF.text isEqualToString:@""] ||
+       [self.antiprsitcsFreqncyTF.text isEqualToString:@""] ||
+       [self.antiprsitcsDoseTF.text isEqualToString:@""] ||
+       [self.antiprsitcsVeternrianTF.text isEqualToString:@""] ||
+       [self.antiprsitcsNotesTV.text isEqualToString:@""])
+    {
+        UIAlertView *alrtView = [[UIAlertView alloc]initWithTitle:@"Enter Antiparasitics Details" message:@"Please enter all the fields properly" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alrtView show];
+    }
+    else
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        DBManager *dbManager = [[DBManager alloc]init];
+        [dbManager createAntiparasiticsDetailsTable];
+        [dbManager saveAntiparasiticsDetails:self.antiprsitcsTreatmntNameTF.text :self.antiprsitcsTreatmntTypeTF.text :self.antiprsitcsFirstAdminstrtnTF.text :self.antiprsitcsLastAdminstrtnTF.text :self.antiprsitcsFreqncyTF.text :self.antiprsitcsDoseTF.text :self.antiprsitcsVeternrianTF.text :self.antiprsitcsNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    }
 }
+
+
+#pragma mark - DatePicker for Date selection
+
+-(void)selectedDateAction
+{
+    
+    self.dateFormater = [[NSDateFormatter alloc] init];
+    [self.dateFormater setDateFormat:@"dd-MM-yyyy"];
+    NSString *formatedDate = [self.dateFormater stringFromDate:self.datePicker.date];
+    if(self.dateResult == 1)
+    {
+        self.antiprsitcsFirstAdminstrtnTF.text = formatedDate;
+    }
+    else if(self.dateResult == 2)
+    {
+        self.antiprsitcsLastAdminstrtnTF.text = formatedDate;
+    }
+    
+}
+
 
 
 - (IBAction)calnderBtnAction:(id)sender
 {
     
+    if(sender == self.frstAdmntrnDateCalndr)
+    {
+        self.datesView.frame = CGRectMake(20, 165, 375, 200);
+        self.dateResult = 1;
+    }
+    else if(sender == self.lastAdmntrnDateCalndr)
+    {
+        self.datesView.frame = CGRectMake(20, 210, 375, 200);
+        self.dateResult = 2;
+    }
+    
+    self.datePicker.hidden = NO;
+    self.datesView.hidden = NO;
+    
+    [self.datesView setBackgroundColor:[UIColor grayColor]];
+    [self.view addSubview:self.datesView];
+    
+    [self.datePicker addTarget:self action:@selector(selectedDateAction) forControlEvents:UIControlEventValueChanged];
+    [self.datesView addSubview:self.datePicker];
+    
 }
-
-
 
 - (IBAction)dateSelectBtnAction:(id)sender
 {
     
+    self.datePicker.hidden = YES;
+    self.datesView.hidden = YES;
 }
+
 
 
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddAntiparasiticsViewController : UIViewController<UITextFieldDelegate>
+@interface AddAntiparasiticsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *antiparasiticsScrollView;
 
@@ -34,5 +34,13 @@
 
 - (IBAction)calnderBtnAction:(id)sender;
 - (IBAction)dateSelectBtnAction:(id)sender;
+
+@property UIView *datesView;
+@property UIDatePicker *datePicker;
+@property NSDateFormatter *dateFormater;
+@property NSString *dateString;
+
+@property int dateResult;
+
 
 @end

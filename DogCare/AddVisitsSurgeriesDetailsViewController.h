@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddVisitsSurgeriesDetailsViewController : UIViewController<UITextFieldDelegate>
+@interface AddVisitsSurgeriesDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *visitsScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *visitDateTF;
@@ -27,5 +27,13 @@
 
 - (IBAction)calenderBtnAction:(id)sender;
 - (IBAction)dateSelectAction:(id)sender;
+
+@property UIView *datesView;
+@property UIDatePicker *datePicker;
+@property NSDateFormatter *dateFormater;
+@property NSString *dateString;
+
+@property int dateResult;
+
 
 @end

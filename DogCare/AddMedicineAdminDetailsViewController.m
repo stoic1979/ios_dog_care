@@ -22,7 +22,7 @@
     
     self.medScrollView.showsVerticalScrollIndicator = YES;
     self.medScrollView.showsHorizontalScrollIndicator = YES;
-    self.medScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 800);
+    self.medScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 850);
     [self.view addSubview:self.medScrollView];
     
     self.medicationNameTF.delegate = self;
@@ -31,10 +31,26 @@
     self.medicineVeternrianTF.delegate = self;
     self.firstAdmistrtnDateTF.delegate = self;
     self.lastAdmistrtnDateTF.delegate = self;
+    
+    
+    self.medicineNotesTV.text = @"Enter Notes";
+    self.medicineNotesTV.textColor = [UIColor lightGrayColor];
+    self.medicineNotesTV.delegate = self;
 
     
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+    
+    self.dateResult = 0;
+    
+    self.datesView = [[UIView alloc]init];
+    self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -62,19 +78,76 @@
 }
 
 
+#pragma mark - Adding Place Holder for TextView
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.medicineNotesTV.text = @"";
+    self.medicineNotesTV.textColor = [UIColor blackColor];
+    return YES;
+}
+
+- (BOOL) textViewShouldEndEditing:(UITextView *)textView
+{
+    if(self.medicineNotesTV.text.length == 0){
+        self.medicineNotesTV.textColor = [UIColor lightGrayColor];
+        self.medicineNotesTV.text = @"Enter Notes";
+        [self.medicineNotesTV resignFirstResponder];
+    }
+    return YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView
+{
+    
+    if(self.medicineNotesTV.text.length == 0){
+        self.medicineNotesTV.textColor = [UIColor lightGrayColor];
+        self.medicineNotesTV.text = @"Enter Notes";
+        [self.medicineNotesTV resignFirstResponder];
+    }
+}
+
+#pragma mark - HIDING KEYBOARD
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
+-(void)dismissKeyboard
+{
+    for (UIView *view in self.view.subviews)
+        [view resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+
+#pragma mark - NavigationBar button to Save or Update
+
 -(void)doneAction
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    DBManager *dbManager = [[DBManager alloc]init];
-    [dbManager createMedAdminDetailsTable];
-    [dbManager saveMedAdminDetails:self.medicationNameTF.text :self.firstAdmistrtnDateTF.text :self.lastAdmistrtnDateTF.text :self.medicineFreqncyTF.text :self.medicineDoseTF.text :self.medicineVeternrianTF.text :self.medicineNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    if([self.medicationNameTF.text isEqualToString:@""] ||
+       [self.firstAdmistrtnDateTF.text isEqualToString:@""] ||
+       [self.lastAdmistrtnDateTF.text isEqualToString:@""] ||
+       [self.medicineFreqncyTF.text isEqualToString:@""] ||
+       [self.medicineDoseTF.text isEqualToString:@""] ||
+       [self.medicineVeternrianTF.text isEqualToString:@""] ||
+       [self.medicineNotesTV.text isEqualToString:@""])
+    {
+        UIAlertView *alrtView = [[UIAlertView alloc]initWithTitle:@"Enter Medical Details" message:@"Please enter all the fields properly" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alrtView show];
+    }
+    else
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        DBManager *dbManager = [[DBManager alloc]init];
+        [dbManager createMedAdminDetailsTable];
+        [dbManager saveMedAdminDetails:self.medicationNameTF.text :self.firstAdmistrtnDateTF.text :self.lastAdmistrtnDateTF.text :self.medicineFreqncyTF.text :self.medicineDoseTF.text :self.medicineVeternrianTF.text :self.medicineNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,17 +156,59 @@
 }
 
 
+#pragma mark - DatePicker for Date selection
+
+-(void)selectedDateAction
+{
+    
+    self.dateFormater = [[NSDateFormatter alloc] init];
+    [self.dateFormater setDateFormat:@"dd-MM-yyyy"];
+    NSString *formatedDate = [self.dateFormater stringFromDate:self.datePicker.date];
+    if(self.dateResult == 1)
+    {
+        self.firstAdmistrtnDateTF.text = formatedDate;
+    }
+    else if(self.dateResult == 2)
+    {
+        self.lastAdmistrtnDateTF.text = formatedDate;
+    }
+    
+}
+
+
 
 - (IBAction)calnderBtnAction:(id)sender
 {
     
+    if(sender == self.frstAdmntrnDateCalndr)
+    {
+        self.datesView.frame = CGRectMake(20, 120, 375, 200);
+        self.dateResult = 1;
+    }
+    else if(sender == self.lastAdmntrnDateCalndr)
+    {
+        self.datesView.frame = CGRectMake(20, 160, 375, 200);
+        self.dateResult = 2;
+    }
+    
+    self.datePicker.hidden = NO;
+    self.datesView.hidden = NO;
+    
+    [self.datesView setBackgroundColor:[UIColor grayColor]];
+    [self.view addSubview:self.datesView];
+    
+    [self.datePicker addTarget:self action:@selector(selectedDateAction) forControlEvents:UIControlEventValueChanged];
+    [self.datesView addSubview:self.datePicker];
+    
 }
-
 
 - (IBAction)dateSelectBtnAction:(id)sender
 {
     
+    self.datePicker.hidden = YES;
+    self.datesView.hidden = YES;
 }
+
 
 
 

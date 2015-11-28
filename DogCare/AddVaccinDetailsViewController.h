@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddVaccinDetailsViewController : UIViewController<UITextFieldDelegate>
+@interface AddVaccinDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *vaccinScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *vaccinDateTF;
@@ -35,6 +35,8 @@
 @property UIDatePicker *datePicker;
 @property NSDateFormatter *dateFormater;
 @property NSString *dateString;
+
+@property int dateResult;
 
 
 @end

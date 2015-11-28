@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddMedicineAdminDetailsViewController : UIViewController<UITextFieldDelegate>
+@interface AddMedicineAdminDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *medScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *medicationNameTF;
@@ -31,6 +31,13 @@
 
 - (IBAction)calnderBtnAction:(id)sender;
 - (IBAction)dateSelectBtnAction:(id)sender;
+
+@property UIView *datesView;
+@property UIDatePicker *datePicker;
+@property NSDateFormatter *dateFormater;
+@property NSString *dateString;
+
+@property int dateResult;
 
 
 

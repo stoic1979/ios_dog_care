@@ -30,8 +30,17 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS DogsData (dog_id INTEGER  PRIMARY KEY DEFAULT NULL, dogName TEXT DEFAULT NULL, birthDate TEXT DEFAULT NULL, weight TEXT DEFAULT NULL, withers TEXT DEFAULT NULL, breed TEXT DEFAULT NULL, chipCode TEXT DEFAULT NULL, sex TEXT DEFAULT NULL, uniqueId INTEGER DEFAULT NULL)"];
+    BOOL isCreated = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS DogsData (dog_id INTEGER  PRIMARY KEY DEFAULT NULL, dogName TEXT DEFAULT NULL, birthDate TEXT DEFAULT NULL, weight TEXT DEFAULT NULL, withers TEXT DEFAULT NULL, breed TEXT DEFAULT NULL, chipCode TEXT DEFAULT NULL, sex TEXT DEFAULT NULL)"];
     [database close];
+    
+    if(isCreated)
+    {
+        NSLog(@"Table created successfully");
+    }
+    else
+    {
+        NSLog(@"Failed to created table");
+    }
 }
 
 
@@ -39,32 +48,68 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS VaccinationData (vaccination_id INTEGER  PRIMARY KEY DEFAULT NULL, vaccinNameType TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, reminderDate TEXT DEFAULT NULL, notes TEXT DEFAULT NULL,FOREIGN KEY (vaccin_dog_id) REFERENCES DogsData (dog_id))"];
+    BOOL isCreated = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS VaccinationData (vaccination_id INTEGER  PRIMARY KEY DEFAULT NULL, vaccinDate TEXT DEFAULT NULL, vaccinNameType TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, reminderDate TEXT DEFAULT NULL, notes TEXT DEFAULT NULL, vaccin_frgn_id INTEGER DEFAULT NULL, FOREIGN KEY(vaccin_frgn_id) REFERENCES DogsData (dog_id))"];
     [database close];
+    
+    if(isCreated)
+    {
+        NSLog(@"Table created successfully");
+    }
+    else
+    {
+        NSLog(@"Failed to created table");
+    }
 }
 
 -(void)createAntiparasiticsDetailsTable
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS AntiParasiticsData (antiparasitics_id INTEGER  PRIMARY KEY DEFAULT NULL, treatmentName TEXT DEFAULT NULL, treatmentType TEXT DEFAULT NULL, firstAdminstrtnDate TEXT DEFAULT NULL, lastAdminstrtnDate TEXT DEFAULT NULL, frequency TEXT DEFAULT NULL, dose TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, notes TEXT DEFAULT NULL,FOREIGN KEY (antipartics_dog_id) REFERENCES DogsData (dog_id))"];
+    BOOL isCreated = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS AntiParasiticsData (antiparasitics_id INTEGER  PRIMARY KEY DEFAULT NULL, treatmentName TEXT DEFAULT NULL, treatmentType TEXT DEFAULT NULL, firstAdminstrtnDate TEXT DEFAULT NULL, lastAdminstrtnDate TEXT DEFAULT NULL, frequency TEXT DEFAULT NULL, dose TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, notes TEXT DEFAULT NULL, antptic_frgn_id INTEGER DEFAULT NULL, FOREIGN KEY (antptic_frgn_id) REFERENCES DogsData (dog_id))"];
     [database close];
+    
+    if(isCreated)
+    {
+        NSLog(@"Table created successfully");
+    }
+    else
+    {
+        NSLog(@"Failed to created table");
+    }
 }
 
 -(void)createMedAdminDetailsTable
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS MedicineAdministrtnData (medAdmin_id INTEGER  PRIMARY KEY DEFAULT NULL, medicationName TEXT DEFAULT NULL, firstAdminstrtnDate TEXT DEFAULT NULL, lastAdminstrtnDate TEXT DEFAULT NULL, frequency TEXT DEFAULT NULL, dose TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, notes TEXT DEFAULT NULL,FOREIGN KEY (medAdmin_dog_id) REFERENCES DogsData (dog_id))"];
+    BOOL isCreated = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS MedicineAdministrtnData (medAdmin_id INTEGER  PRIMARY KEY DEFAULT NULL, medicationName TEXT DEFAULT NULL, firstAdminstrtnDate TEXT DEFAULT NULL, lastAdminstrtnDate TEXT DEFAULT NULL, frequency TEXT DEFAULT NULL, dose TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, notes TEXT DEFAULT NULL, medAdmstrtn_frgn_id INTEGER DEFAULT NULL, FOREIGN KEY (medAdmstrtn_frgn_id) REFERENCES DogsData (dog_id))"];
     [database close];
+    
+    if(isCreated)
+    {
+        NSLog(@"Table created successfully");
+    }
+    else
+    {
+        NSLog(@"Failed to created table");
+    }
 }
 
 -(void)createVisitsSurgDetailsTable
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    [database executeUpdate:@"CREATE TABLE IF NOT EXISTS VisitsSurgriesData (visitsSurgrs_id INTEGER  PRIMARY KEY DEFAULT NULL, visitDate TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, nextInspectionDate TEXT DEFAULT NULL, description TEXT DEFAULT NULL,FOREIGN KEY (visitsSurg_dog_id) REFERENCES DogsData (dog_id))"];
+    BOOL isCreated = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS VisitsSurgriesData (visitsSurgrs_id INTEGER  PRIMARY KEY DEFAULT NULL, visitDate TEXT DEFAULT NULL, veternarian TEXT DEFAULT NULL, nextInspectionDate TEXT DEFAULT NULL, description TEXT DEFAULT NULL, visitSurgrs_frgn_id INTEGER DEFAULT NULL, FOREIGN KEY (visitSurgrs_frgn_id) REFERENCES DogsData (dog_id))"];
     [database close];
+    
+    if(isCreated)
+    {
+        NSLog(@"Table created successfully");
+    }
+    else
+    {
+        NSLog(@"Failed to created table");
+    }
 }
 
 
@@ -93,7 +138,7 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isInserted = [database executeUpdate:@"INSERT INTO VaccinationData (vaccinDate,VaccinNameType,veternarian,reminderDate,notes,vaccin_dog_id) VALUES (?,?,?,?,?,?)", vaccinDate, VaccinNameType, veternarian, reminderDate, notes, dogInfoID, nil];
+    BOOL isInserted = [database executeUpdate:@"INSERT INTO VaccinationData (vaccinDate,VaccinNameType,veternarian,reminderDate,notes,vaccin_frgn_id) VALUES (?,?,?,?,?,?)", vaccinDate, VaccinNameType, veternarian, reminderDate, notes, [NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isInserted)
@@ -110,7 +155,7 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isInserted = [database executeUpdate:@"INSERT INTO AntiParasiticsData (treatmentName,treatmentType,firstAdminstrtnDate,lastAdminstrtnDate,frequency,dose,veternarian,notes,antipartics_dog_id) VALUES (?,?,?,?,?,?,?,?,?)", treatmentName, treatmentType, firstAdminstrtnDate, lastAdminstrtnDate, frequency, dose, veternarian, notes, dogInfoID, nil];
+    BOOL isInserted = [database executeUpdate:@"INSERT INTO AntiParasiticsData (treatmentName,treatmentType,firstAdminstrtnDate,lastAdminstrtnDate,frequency,dose,veternarian,notes,antptic_frgn_id) VALUES (?,?,?,?,?,?,?,?,?)", treatmentName, treatmentType, firstAdminstrtnDate, lastAdminstrtnDate, frequency, dose, veternarian, notes, [NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isInserted)
@@ -127,7 +172,7 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isInserted = [database executeUpdate:@"INSERT INTO MedicineAdministrtnData (medicationName,firstAdminstrtnDate,lastAdminstrtnDate,frequency,dose,veternarian,notes,medAdmin_dog_id) VALUES (?,?,?,?,?,?,?,?)", medicationName, firstAdminstrtnDate, lastAdminstrtnDate, frequency, dose, veternarian, notes, dogInfoID, nil];
+    BOOL isInserted = [database executeUpdate:@"INSERT INTO MedicineAdministrtnData (medicationName,firstAdminstrtnDate,lastAdminstrtnDate,frequency,dose,veternarian,notes,medAdmstrtn_frgn_id) VALUES (?,?,?,?,?,?,?,?)", medicationName, firstAdminstrtnDate, lastAdminstrtnDate, frequency, dose, veternarian, notes, [NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isInserted)
@@ -144,7 +189,7 @@
 {
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    BOOL isInserted = [database executeUpdate:@"INSERT INTO VisitsSurgriesData (visitDate,veternarian,nextInspectionDate,description,visitsSurg_dog_id) VALUES (?,?,?,?,?)", visitDate, veternarian, nextInspectionDate, description, dogInfoID, nil];
+    BOOL isInserted = [database executeUpdate:@"INSERT INTO VisitsSurgriesData (visitDate,veternarian,nextInspectionDate,description,visitSurgrs_frgn_id) VALUES (?,?,?,?,?)", visitDate, veternarian, nextInspectionDate, description, [NSNumber numberWithInt:dogInfoID], nil];
     [database close];
     
     if(isInserted)
@@ -237,15 +282,15 @@
     
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM VaccinationData WHERE vaccin_dog_id=?",dogInfoID];
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM VaccinationData WHERE vaccin_frgn_id=?", [NSNumber numberWithInt:dogInfoID]];
     
     while([results next]) {
         
-        NSLog(@"%@",[results stringForColumn:@"vaccinDate"]);
-        NSLog(@"%@",[results stringForColumn:@"VaccinNameType"]);
-        NSLog(@"%@",[results stringForColumn:@"veternarian"]);
-        NSLog(@"%@",[results stringForColumn:@"reminderDate"]);
-        NSLog(@"%@",[results stringForColumn:@"notes"]);
+        NSLog(@"************%@",[results stringForColumn:@"vaccinDate"]);
+        NSLog(@"************%@",[results stringForColumn:@"VaccinNameType"]);
+        NSLog(@"************%@",[results stringForColumn:@"veternarian"]);
+        NSLog(@"************%@",[results stringForColumn:@"reminderDate"]);
+        NSLog(@"************%@",[results stringForColumn:@"notes"]);
         
         [resultArray addObject:[results stringForColumn:@"vaccinDate"]];
         [resultArray addObject:[results stringForColumn:@"VaccinNameType"]];
@@ -287,7 +332,7 @@
     
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM AntiParasiticsData WHERE antipartics_dog_id=?",dogInfoID];
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM AntiParasiticsData WHERE antptic_frgn_id=?", [NSNumber numberWithInt:dogInfoID]];
     
     while([results next]) {
         
@@ -342,7 +387,7 @@
     
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM MedicineAdministrtnData WHERE medAdmin_dog_id=?",dogInfoID];
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM MedicineAdministrtnData WHERE medAdmstrtn_frgn_id=?", [NSNumber numberWithInt:dogInfoID]];
     
     while([results next]) {
         
@@ -395,7 +440,7 @@
     
     FMDatabase *database = [FMDatabase databaseWithPath:self.dbPath];
     [database open];
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM VisitsSurgriesData WHERE visitsSurg_dog_id=?",dogInfoID];
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM VisitsSurgriesData WHERE visitSurgrs_frgn_id=?", [NSNumber numberWithInt:dogInfoID]];
     
     while([results next]) {
         

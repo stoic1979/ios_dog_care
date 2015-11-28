@@ -140,6 +140,16 @@
             [dbManager removeAntiparasiticsDetails:dogId];
             [dbManager removeMedAdminDetails:dogId];
             [dbManager removeVisitsSurgDetails:dogId];
+            
+//            [defaults setInteger:0 forKey:@"dogInfoId"];
+            [defaults setObject:@"" forKey:@"dogTitle"];
+            [defaults setObject:@"" forKey:@"dogDOB"];
+            [defaults setObject:@"" forKey:@"dogWeight"];
+            [defaults setObject:@"" forKey:@"dogWither"];
+            [defaults setObject:@"" forKey:@"dogChipCode"];
+            [defaults setObject:@"" forKey:@"dogBreed"];
+            [defaults setObject:@"" forKey:@"dogGender"];
+            
             break;
             
         case 2:

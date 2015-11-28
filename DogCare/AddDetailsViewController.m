@@ -35,9 +35,13 @@
     self.chipTF.delegate = self;
     self.genderTF.delegate = self;
     
-    self.datesView = [[UIView alloc]initWithFrame:CGRectMake(20, 200, 375, 200)];
+    self.datesView = [[UIView alloc]initWithFrame:CGRectMake(20, 120, 375, 200)];
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view.
 }
@@ -58,10 +62,19 @@
     }
 }
 
+#pragma mark - HIDING KEYBOARD
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)dismissKeyboard
+{
+    for (UIView *view in self.view.subviews)
+        [view resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,37 +118,51 @@
     NSString *string = [defaults objectForKey:@"AddOrUpdate"];
     DBManager *dbManager = [[DBManager alloc]init];
     
-    if([string isEqualToString:@"add"])
+    if([self.nameTF.text isEqualToString:@""] ||
+       [self.birthDateTF.text isEqualToString:@""] ||
+       [self.weightTF.text isEqualToString:@""] ||
+       [self.withersTF.text isEqualToString:@""] ||
+       [self.breedTF.text isEqualToString:@""] ||
+       [self.chipTF.text isEqualToString:@""] ||
+       [self.genderTF.text isEqualToString:@""])
     {
-        NSMutableArray *array = [dbManager fetchDogsTitles];
-        
-        int duplicateCount = 0;
-        NSString *string = self.nameTF.text;
-        for (int i = 0; i < array.count; ++i)
+        UIAlertView *alrtView = [[UIAlertView alloc]initWithTitle:@"Enter Vaccin Details" message:@"Please enter all the fields properly" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alrtView show];
+    }
+    else
+    {
+        if([string isEqualToString:@"add"])
         {
-            if ([string isEqualToString:[array objectAtIndex:i]])
+            NSMutableArray *array = [dbManager fetchDogsTitles];
+            
+            int duplicateCount = 0;
+            NSString *string = self.nameTF.text;
+            for (int i = 0; i < array.count; ++i)
             {
-                NSLog(@"Duplicate");
-                duplicateCount++;
+                if ([string isEqualToString:[array objectAtIndex:i]])
+                {
+                    NSLog(@"Duplicate");
+                    duplicateCount++;
+                }
+                
             }
-            
+            if(duplicateCount == 0)
+            {
+                [dbManager createDogDetailsTable];
+                [dbManager saveDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text];
+                [dbManager fetchDogDetails:self.nameTF.text];
+                
+            }
+            else{
+                NSLog(@"Duplicate is there cannot saved");
+            }
         }
-        if(duplicateCount == 0)
+        else if ([string isEqualToString:@"edit"])
         {
-            [dbManager createDogDetailsTable];
-            [dbManager saveDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text];
-            [dbManager fetchDogDetails:self.nameTF.text];
-            
+            [dbManager updateDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text :[defaults integerForKey:@"dogInfoId"]];
         }
-        else{
-            NSLog(@"Duplicate is there cannot saved");
-        }
+
     }
-    else if ([string isEqualToString:@"edit"])
-    {
-        [dbManager updateDogDetails:self.nameTF.text :self.birthDateTF.text :self.weightTF.text :self.withersTF.text :self.breedTF.text :self.chipTF.text :self.genderTF.text :[defaults integerForKey:@"dogInfoId"]];
-    }
-    
     
 }
 
