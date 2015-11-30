@@ -33,13 +33,13 @@
     self.antiprsitcsDoseTF.delegate = self;
     self.antiprsitcsVeternrianTF.delegate =self;
     
-    
-    self.antiprsitcsNotesTV.text = @"Enter Notes";
-    self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
-    self.antiprsitcsNotesTV.delegate = self;
-    
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+    
+    self.antiprsitcsNotesTV.layer.cornerRadius = 5.0f;
+    self.antiprsitcsNotesTV.layer.borderWidth = 1.0f;
+    self.antiprsitcsNotesTV.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+
     
     self.dateResult = 0;
     
@@ -65,49 +65,23 @@
     
     if([actionString isEqualToString:@"medEdit"])
     {
-        self.antprstDtlsAry = [dbManager fetchAntiparasiticsDetails:[defaults integerForKey:@"dogInfoId"]];
+        NSMutableArray *resltsAry = [dbManager fetchAntiparasiticsDetails:[defaults integerForKey:@"dogInfoId"]];
         
-        self.antiprsitcsTreatmntNameTF.text = [self.antprstDtlsAry objectAtIndex:0];
-        self.antiprsitcsTreatmntTypeTF.text = [self.antprstDtlsAry objectAtIndex:1];
-        self.antiprsitcsFirstAdminstrtnTF.text = [self.antprstDtlsAry objectAtIndex:2];
-        self.antiprsitcsLastAdminstrtnTF.text = [self.antprstDtlsAry objectAtIndex:3];
-        self.antiprsitcsFreqncyTF.text = [self.antprstDtlsAry objectAtIndex:4];
-        self.antiprsitcsDoseTF.text = [self.antprstDtlsAry objectAtIndex:5];
-        self.antiprsitcsVeternrianTF.text = [self.antprstDtlsAry objectAtIndex:6];
-        self.antiprsitcsNotesTV.text = [self.antprstDtlsAry objectAtIndex:7];
+        self.antprstDtlsAry = [resltsAry objectAtIndex:[defaults integerForKey:@"indexNumber"]];
+        
+        self.antiprsitcsTreatmntNameTF.text = [self.antprstDtlsAry objectAtIndex:1];
+        self.antiprsitcsTreatmntTypeTF.text = [self.antprstDtlsAry objectAtIndex:2];
+        self.antiprsitcsFirstAdminstrtnTF.text = [self.antprstDtlsAry objectAtIndex:3];
+        self.antiprsitcsLastAdminstrtnTF.text = [self.antprstDtlsAry objectAtIndex:4];
+        self.antiprsitcsFreqncyTF.text = [self.antprstDtlsAry objectAtIndex:5];
+        self.antiprsitcsDoseTF.text = [self.antprstDtlsAry objectAtIndex:6];
+        self.antiprsitcsVeternrianTF.text = [self.antprstDtlsAry objectAtIndex:7];
+        self.antiprsitcsNotesTV.text = [self.antprstDtlsAry objectAtIndex:8];
     }
     
 }
 
 
-#pragma mark - Adding Place Holder for TextView
-
-- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
-{
-    self.antiprsitcsNotesTV.text = @"";
-    self.antiprsitcsNotesTV.textColor = [UIColor blackColor];
-    return YES;
-}
-
-- (BOOL) textViewShouldEndEditing:(UITextView *)textView
-{
-    if(self.antiprsitcsNotesTV.text.length == 0){
-        self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
-        self.antiprsitcsNotesTV.text = @"Enter Notes";
-        [self.antiprsitcsNotesTV resignFirstResponder];
-    }
-    return YES;
-}
-
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.antiprsitcsNotesTV.text.length == 0){
-        self.antiprsitcsNotesTV.textColor = [UIColor lightGrayColor];
-        self.antiprsitcsNotesTV.text = @"Enter Notes";
-        [self.antiprsitcsNotesTV resignFirstResponder];
-    }
-}
 
 #pragma mark - HIDING KEYBOARD
 
@@ -146,10 +120,18 @@
     else
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
         DBManager *dbManager = [[DBManager alloc]init];
-        [dbManager createAntiparasiticsDetailsTable];
-        [dbManager saveAntiparasiticsDetails:self.antiprsitcsTreatmntNameTF.text :self.antiprsitcsTreatmntTypeTF.text :self.antiprsitcsFirstAdminstrtnTF.text :self.antiprsitcsLastAdminstrtnTF.text :self.antiprsitcsFreqncyTF.text :self.antiprsitcsDoseTF.text :self.antiprsitcsVeternrianTF.text :self.antiprsitcsNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        
+        if([[defaults objectForKey:@"MedAction"] isEqualToString:@"medAdd"])
+        {
+
+            [dbManager createAntiparasiticsDetailsTable];
+            [dbManager saveAntiparasiticsDetails:self.antiprsitcsTreatmntNameTF.text :self.antiprsitcsTreatmntTypeTF.text :self.antiprsitcsFirstAdminstrtnTF.text :self.antiprsitcsLastAdminstrtnTF.text :self.antiprsitcsFreqncyTF.text :self.antiprsitcsDoseTF.text :self.antiprsitcsVeternrianTF.text :self.antiprsitcsNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        }
+        else
+        {
+            [dbManager updateAntiparasiticsDetails:self.antiprsitcsTreatmntNameTF.text :self.antiprsitcsTreatmntTypeTF.text :self.antiprsitcsFirstAdminstrtnTF.text :self.antiprsitcsLastAdminstrtnTF.text :self.antiprsitcsFreqncyTF.text :self.antiprsitcsDoseTF.text :self.antiprsitcsVeternrianTF.text :self.antiprsitcsNotesTV.text :[(NSNumber*)[self.antprstDtlsAry objectAtIndex:0] intValue]];
+        }
     }
 }
 

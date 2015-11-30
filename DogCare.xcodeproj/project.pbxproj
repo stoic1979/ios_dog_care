@@ -69,6 +69,8 @@
 		6A167CB21BF5C555006795D3 /* rightMenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A167CAE1BF5C555006795D3 /* rightMenu.jpg */; };
 		6A167CB51BF5D555006795D3 /* AddDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A167CB41BF5D555006795D3 /* AddDetailsViewController.m */; };
 		6A98F86B1C072591004DA438 /* ShowDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A98F86A1C072591004DA438 /* ShowDetailsViewController.m */; };
+		6A9C8EE01C09D11D008ACC16 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C8EDF1C09D11D008ACC16 /* SettingsViewController.m */; };
+		6A9C8EE21C09E183008ACC16 /* arrow486.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9C8EE11C09E183008ACC16 /* arrow486.png */; };
 		6AED13BD1BF99BBB000F074C /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED13BC1BF99BBB000F074C /* NotesViewController.m */; };
 		6AF25D241BF70AC1000E3F18 /* MemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF25D231BF70AC1000E3F18 /* MemoViewController.m */; };
 		6AF25D271BF70AD8000E3F18 /* MedicalRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF25D261BF70AD8000E3F18 /* MedicalRecordsViewController.m */; };
@@ -177,6 +179,9 @@
 		6A167CB41BF5D555006795D3 /* AddDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddDetailsViewController.m; path = DogCare/AddDetailsViewController.m; sourceTree = "<group>"; };
 		6A98F8691C072591004DA438 /* ShowDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailsViewController.h; sourceTree = "<group>"; };
 		6A98F86A1C072591004DA438 /* ShowDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailsViewController.m; sourceTree = "<group>"; };
+		6A9C8EDE1C09D11D008ACC16 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6A9C8EDF1C09D11D008ACC16 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6A9C8EE11C09E183008ACC16 /* arrow486.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow486.png; sourceTree = "<group>"; };
 		6AED13BB1BF99BBB000F074C /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = DogCare/NotesViewController.h; sourceTree = "<group>"; };
 		6AED13BC1BF99BBB000F074C /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = DogCare/NotesViewController.m; sourceTree = "<group>"; };
 		6AF25D221BF70AC1000E3F18 /* MemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemoViewController.h; path = DogCare/MemoViewController.h; sourceTree = "<group>"; };
@@ -237,6 +242,8 @@
 				48C38BF71BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m */,
 				48C38BF91BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.h */,
 				48C38BFA1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m */,
+				6A9C8EDE1C09D11D008ACC16 /* SettingsViewController.h */,
+				6A9C8EDF1C09D11D008ACC16 /* SettingsViewController.m */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -373,6 +380,7 @@
 		6A167CAA1BF5C555006795D3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6A9C8EE11C09E183008ACC16 /* arrow486.png */,
 				48C996C71C06DFE100F0F19D /* dog47.png */,
 				48C996BB1C06DE7C00F0F19D /* backup.png */,
 				48C996BC1C06DE7C00F0F19D /* restore174.png */,
@@ -494,6 +502,7 @@
 				48C282EF1C05FC510036D086 /* calendar146.png in Resources */,
 				6A167C641BF5BB86006795D3 /* Main.storyboard in Resources */,
 				48C996C21C06DE7C00F0F19D /* restore174.png in Resources */,
+				6A9C8EE21C09E183008ACC16 /* arrow486.png in Resources */,
 				6A167CA71BF5C3F8006795D3 /* menu-button.png in Resources */,
 				48CCAD841C057A1C0032D87A /* vetrenary-image.png in Resources */,
 				48C996C31C06DE7C00F0F19D /* settings39.png in Resources */,
@@ -551,6 +560,7 @@
 				48C38BFB1BFCB83300E178E2 /* AddVisitsSurgeriesDetailsViewController.m in Sources */,
 				6A167CA41BF5C3F8006795D3 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				48C71A4D1BFDA5BF0011BAEA /* DBManager.m in Sources */,
+				6A9C8EE01C09D11D008ACC16 /* SettingsViewController.m in Sources */,
 				48C38BF51BFCB7F100E178E2 /* AddAntiparasiticsViewController.m in Sources */,
 				48C38BF81BFCB81A00E178E2 /* AddMedicineAdminDetailsViewController.m in Sources */,
 				6AF25D271BF70AD8000E3F18 /* MedicalRecordsViewController.m in Sources */,

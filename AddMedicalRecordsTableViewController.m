@@ -51,20 +51,22 @@
     
     if([medRecrd isEqualToString:@"vaccination"])
     {
-        self.medclRecrdsArray = [dbManager fetchVaccinationTitles];
+        self.medclRecrdsArray = [dbManager fetchVaccinationTitles:[defaults integerForKey:@"dogInfoId"]];
     }
     else if ([medRecrd isEqualToString:@"antiprstics"])
     {
-        self.medclRecrdsArray = [dbManager fetchAntiprsticsTitles];
+        self.medclRecrdsArray = [dbManager fetchAntiprsticsTitles:[defaults integerForKey:@"dogInfoId"]];
     }
     else if ([medRecrd isEqualToString:@"medcneAdmintrtn"])
     {
-        self.medclRecrdsArray = [dbManager fetchMedicineAdminTitles];
+        self.medclRecrdsArray = [dbManager fetchMedicineAdminTitles:[defaults integerForKey:@"dogInfoId"]];
     }
     else if ([medRecrd isEqualToString:@"visitsSurgries"])
     {
-        self.medclRecrdsArray = [dbManager fetchVisitsSurgriesDates];
+        self.medclRecrdsArray = [dbManager fetchVisitsSurgriesDates:[defaults integerForKey:@"dogInfoId"]];
     }
+    
+    [self.addMedRecrdsTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,6 +131,8 @@
     NSString *medRecrd = [defaults objectForKey:@"MedRecrds"];
     
     [defaults setObject:@"medEdit" forKey:@"MedAction"];
+    
+    [defaults setInteger:indexPath.row forKey:@"indexNumber"];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     

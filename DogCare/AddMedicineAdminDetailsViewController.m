@@ -31,15 +31,14 @@
     self.medicineVeternrianTF.delegate = self;
     self.firstAdmistrtnDateTF.delegate = self;
     self.lastAdmistrtnDateTF.delegate = self;
-    
-    
-    self.medicineNotesTV.text = @"Enter Notes";
-    self.medicineNotesTV.textColor = [UIColor lightGrayColor];
-    self.medicineNotesTV.delegate = self;
 
     
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+    
+    self.medicineNotesTV.layer.cornerRadius = 5.0f;
+    self.medicineNotesTV.layer.borderWidth = 1.0f;
+    self.medicineNotesTV.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     self.dateResult = 0;
     
@@ -64,48 +63,22 @@
     
     if([actionString isEqualToString:@"medEdit"])
     {
-        self.medAdmitrnAry = [dbManager fetchMedAdminDetails:[defaults integerForKey:@"dogInfoId"]];
+        NSMutableArray *resltsAry = [dbManager fetchMedAdminDetails:[defaults integerForKey:@"dogInfoId"]];
         
-        self.medicationNameTF.text = [self.medAdmitrnAry objectAtIndex:0];
-        self.firstAdmistrtnDateTF.text = [self.medAdmitrnAry objectAtIndex:1];
-        self.lastAdmistrtnDateTF.text = [self.medAdmitrnAry objectAtIndex:2];
-        self.medicineFreqncyTF.text = [self.medAdmitrnAry objectAtIndex:3];
-        self.medicineDoseTF.text = [self.medAdmitrnAry objectAtIndex:4];
-        self.medicineVeternrianTF.text = [self.medAdmitrnAry objectAtIndex:5];
-        self.medicineNotesTV.text = [self.medAdmitrnAry objectAtIndex:6];
+        self.medAdmitrnAry = [resltsAry objectAtIndex:[defaults integerForKey:@"indexNumber"]];
+        
+        self.medicationNameTF.text = [self.medAdmitrnAry objectAtIndex:1];
+        self.firstAdmistrtnDateTF.text = [self.medAdmitrnAry objectAtIndex:2];
+        self.lastAdmistrtnDateTF.text = [self.medAdmitrnAry objectAtIndex:3];
+        self.medicineFreqncyTF.text = [self.medAdmitrnAry objectAtIndex:4];
+        self.medicineDoseTF.text = [self.medAdmitrnAry objectAtIndex:5];
+        self.medicineVeternrianTF.text = [self.medAdmitrnAry objectAtIndex:6];
+        self.medicineNotesTV.text = [self.medAdmitrnAry objectAtIndex:7];
     }
     
 }
 
 
-#pragma mark - Adding Place Holder for TextView
-
-- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
-{
-    self.medicineNotesTV.text = @"";
-    self.medicineNotesTV.textColor = [UIColor blackColor];
-    return YES;
-}
-
-- (BOOL) textViewShouldEndEditing:(UITextView *)textView
-{
-    if(self.medicineNotesTV.text.length == 0){
-        self.medicineNotesTV.textColor = [UIColor lightGrayColor];
-        self.medicineNotesTV.text = @"Enter Notes";
-        [self.medicineNotesTV resignFirstResponder];
-    }
-    return YES;
-}
-
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.medicineNotesTV.text.length == 0){
-        self.medicineNotesTV.textColor = [UIColor lightGrayColor];
-        self.medicineNotesTV.text = @"Enter Notes";
-        [self.medicineNotesTV resignFirstResponder];
-    }
-}
 
 #pragma mark - HIDING KEYBOARD
 
@@ -142,10 +115,18 @@
     else
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
         DBManager *dbManager = [[DBManager alloc]init];
-        [dbManager createMedAdminDetailsTable];
-        [dbManager saveMedAdminDetails:self.medicationNameTF.text :self.firstAdmistrtnDateTF.text :self.lastAdmistrtnDateTF.text :self.medicineFreqncyTF.text :self.medicineDoseTF.text :self.medicineVeternrianTF.text :self.medicineNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        
+        if([[defaults objectForKey:@"MedAction"] isEqualToString:@"medAdd"])
+        {
+
+            [dbManager createMedAdminDetailsTable];
+            [dbManager saveMedAdminDetails:self.medicationNameTF.text :self.firstAdmistrtnDateTF.text :self.lastAdmistrtnDateTF.text :self.medicineFreqncyTF.text :self.medicineDoseTF.text :self.medicineVeternrianTF.text :self.medicineNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        }
+        else
+        {
+            [dbManager updateMedAdminDetails:self.medicationNameTF.text :self.firstAdmistrtnDateTF.text :self.lastAdmistrtnDateTF.text :self.medicineFreqncyTF.text :self.medicineDoseTF.text :self.medicineVeternrianTF.text :self.medicineNotesTV.text :[(NSNumber*)[self.medAdmitrnAry objectAtIndex:0] intValue]];
+        }
     }
     
 }

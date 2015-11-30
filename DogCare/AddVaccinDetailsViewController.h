@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddVaccinDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
+@interface AddVaccinDetailsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *vaccinScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *vaccinDateTF;

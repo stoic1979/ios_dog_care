@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddVisitsSurgeriesDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
+@interface AddVisitsSurgeriesDetailsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *visitsScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *visitDateTF;

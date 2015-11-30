@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddAntiparasiticsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
+@interface AddAntiparasiticsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *antiparasiticsScrollView;
 

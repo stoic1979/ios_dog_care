@@ -24,9 +24,29 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    NSString *weightType;
+    NSString *lenghtType;
+    
+    if([[defaults objectForKey:@"weight"] isEqualToString:@"Grams"])
+    {
+        weightType = @"kg";
+    }
+    else if ([[defaults objectForKey:@"weight"] isEqualToString:@"Pounds"])
+    {
+        weightType = @"ib";
+    }
+    if([[defaults objectForKey:@"length"] isEqualToString:@"Meters"])
+    {
+        lenghtType = @"cm";
+    }
+    else if ([[defaults objectForKey:@"length"] isEqualToString:@"Inches"])
+    {
+        lenghtType = @"inch";
+    }
+    
     self.nameLabel.text = [defaults objectForKey:@"dogTitle"];
-    self.weightLabel.text = [NSString stringWithFormat:@"%@ kg",[defaults objectForKey:@"dogWeight"]];
-    self.heightLabel.text = [NSString stringWithFormat:@"%@ cm",[defaults objectForKey:@"dogWither"]];
+    self.weightLabel.text = [NSString stringWithFormat:@"%@ %@",[defaults objectForKey:@"dogWeight"], weightType];
+    self.heightLabel.text = [NSString stringWithFormat:@"%@ %@",[defaults objectForKey:@"dogWither"], lenghtType];
     self.birthDateLabel.text = [defaults objectForKey:@"dogDOB"];
     self.chipCodeLabel.text = [defaults objectForKey:@"dogChipCode"];
 }

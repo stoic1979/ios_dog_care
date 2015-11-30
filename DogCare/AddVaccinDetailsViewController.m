@@ -33,9 +33,9 @@
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
     
-    self.vaccinNotesTV.text = @"Enter Notes";
-    self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
-    self.vaccinNotesTV.delegate = self;
+    self.vaccinNotesTV.layer.cornerRadius = 5.0f;
+    self.vaccinNotesTV.layer.borderWidth = 1.0f;
+    self.vaccinNotesTV.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     self.dateResult = 0;
     
@@ -53,6 +53,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     DBManager *dbManager = [[DBManager alloc]init];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -61,47 +62,23 @@
     
     if([actionString isEqualToString:@"medEdit"])
     {
-        self.vaccinDtlsAry = [dbManager fetchVaccinationDetails:[defaults integerForKey:@"dogInfoId"]];
+        
+        NSMutableArray *resltsAry = [dbManager fetchVaccinationDetails:[defaults integerForKey:@"dogInfoId"]];
+        
+        self.vaccinDtlsAry = [resltsAry objectAtIndex:[defaults integerForKey:@"indexNumber"]];
         
         NSLog(@"%@",self.vaccinDtlsAry);
         
-        self.vaccinDateTF.text = [self.vaccinDtlsAry objectAtIndex:0];
-        self.vaccinNameTypeTF.text = [self.vaccinDtlsAry objectAtIndex:1];
-        self.vaccinVeternrianTF.text = [self.vaccinDtlsAry objectAtIndex:2];
-        self.vaccinReminderDateTF.text = [self.vaccinDtlsAry objectAtIndex:3];
-        self.vaccinNotesTV.text = [self.vaccinDtlsAry objectAtIndex:4];
+        self.vaccinDateTF.text = [self.vaccinDtlsAry objectAtIndex:1];
+        self.vaccinNameTypeTF.text = [self.vaccinDtlsAry objectAtIndex:2];
+        self.vaccinVeternrianTF.text = [self.vaccinDtlsAry objectAtIndex:3];
+        self.vaccinReminderDateTF.text = [self.vaccinDtlsAry objectAtIndex:4];
+        self.vaccinNotesTV.text = [self.vaccinDtlsAry objectAtIndex:5];
     }
     
 }
 
-#pragma mark - Adding Place Holder for TextView
 
-- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
-{
-    self.vaccinNotesTV.text = @"";
-    self.vaccinNotesTV.textColor = [UIColor blackColor];
-    return YES;
-}
-
-- (BOOL) textViewShouldEndEditing:(UITextView *)textView
-{
-    if(self.vaccinNotesTV.text.length == 0){
-        self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
-        self.vaccinNotesTV.text = @"Enter Notes";
-        [self.vaccinNotesTV resignFirstResponder];
-    }
-    return YES;
-}
-
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.vaccinNotesTV.text.length == 0){
-        self.vaccinNotesTV.textColor = [UIColor lightGrayColor];
-        self.vaccinNotesTV.text = @"Enter Notes";
-        [self.vaccinNotesTV resignFirstResponder];
-    }
-}
 
 #pragma mark - HIDING KEYBOARD
 
@@ -136,10 +113,17 @@
     else
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
         DBManager *dbManager = [[DBManager alloc]init];
-        [dbManager createVaccinationDetailsTable];
-        [dbManager saveVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        
+        if([[defaults objectForKey:@"MedAction"] isEqualToString:@"medAdd"])
+        {
+            [dbManager createVaccinationDetailsTable];
+            [dbManager saveVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :[defaults integerForKey:@"dogInfoId"]];
+        }
+        else
+        {
+            [dbManager updateVaccinationDetails:self.vaccinDateTF.text :self.vaccinNameTypeTF.text :self.vaccinVeternrianTF.text :self.vaccinReminderDateTF.text :self.vaccinNotesTV.text :[(NSNumber*)[self.vaccinDtlsAry objectAtIndex:0] intValue]];
+        }
     }
     
 }

@@ -7,6 +7,8 @@
 //
 
 #import "MemoViewController.h"
+#import "NotesViewController.h"
+#import "DBManager.h"
 
 @interface MemoViewController ()
 
@@ -16,14 +18,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.memoTableView.delegate = self;
+    self.memoTableView.dataSource = self;
                            
-
+    self.notesArray = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
 }
 
--(void)addMemoAction
+-(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"Clicked");
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    DBManager *dbManager = [[DBManager alloc]init];
+    self.notesArray = [dbManager fetchNotesList:[defaults integerForKey:@"dogInfoId"]];
+    
+    [self.memoTableView reloadData];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +49,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.notesArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -46,21 +60,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    switch (indexPath.row)
-    {
-        case 0:
-            cell.textLabel.text = @"MEMO";
-            break;
-            
-        case 1:
-            cell.textLabel.text = @"MEDICAL RECORDS";
-            break;
-            
-        case 2:
-            cell.textLabel.text = @"VETERINARIES";
-            break;
-            
-    }
+    cell.textLabel.text = [self.notesArray objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -68,6 +68,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"notesEdit" forKey:@"NotesWork"];
+    [defaults setInteger:indexPath.row forKey:@"indexNumber"];
+        
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NotesViewController *notesVC = [storyboard instantiateViewControllerWithIdentifier:@"NotesViewControler"];
+    [self.navigationController pushViewController:notesVC animated:YES];
 }
 
 

@@ -30,12 +30,13 @@
     self.visitVeternrianTF.delegate = self;
     self.nextInspectionTF.delegate = self;
     
-    self.visitsDescriptionTV.text = @"Enter Description";
-    self.visitsDescriptionTV.textColor = [UIColor lightGrayColor];
-    self.visitsDescriptionTV.delegate = self;
     
     self.doneRtBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem = self.doneRtBarBtn;
+    
+    self.visitsDescriptionTV.layer.cornerRadius = 5.0f;
+    self.visitsDescriptionTV.layer.borderWidth = 1.0f;
+    self.visitsDescriptionTV.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     
     self.dateResult = 0;
@@ -61,45 +62,20 @@
     
     if([actionString isEqualToString:@"medEdit"])
     {
-        self.vstSurgriesAry = [dbManager fetchVisitsSurgDetails:[defaults integerForKey:@"dogInfoId"]];
+        NSMutableArray *resltsAry = [dbManager fetchVisitsSurgDetails:[defaults integerForKey:@"dogInfoId"]];
         
-        self.visitDateTF.text = [self.vstSurgriesAry objectAtIndex:0];
-        self.visitVeternrianTF.text = [self.vstSurgriesAry objectAtIndex:1];
-        self.nextInspectionTF.text = [self.vstSurgriesAry objectAtIndex:2];
-        self.visitsDescriptionTV.text = [self.vstSurgriesAry objectAtIndex:3];
+        self.vstSurgriesAry = [resltsAry objectAtIndex:[defaults integerForKey:@"indexNumber"]];
+        
+        self.visitDateTF.text = [self.vstSurgriesAry objectAtIndex:1];
+        self.visitVeternrianTF.text = [self.vstSurgriesAry objectAtIndex:2];
+        self.nextInspectionTF.text = [self.vstSurgriesAry objectAtIndex:3];
+        self.visitsDescriptionTV.text = [self.vstSurgriesAry objectAtIndex:4];
     }
     
 }
 
 
-#pragma mark - Adding Place Holder for TextView
 
-- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
-{
-    self.visitsDescriptionTV.text = @"";
-    self.visitsDescriptionTV.textColor = [UIColor blackColor];
-    return YES;
-}
-
-- (BOOL) textViewShouldEndEditing:(UITextView *)textView
-{
-    if(self.visitsDescriptionTV.text.length == 0){
-        self.visitsDescriptionTV.textColor = [UIColor lightGrayColor];
-        self.visitsDescriptionTV.text = @"Enter Description";
-        [self.visitsDescriptionTV resignFirstResponder];
-    }
-    return YES;
-}
-
--(void) textViewDidChange:(UITextView *)textView
-{
-    
-    if(self.visitsDescriptionTV.text.length == 0){
-        self.visitsDescriptionTV.textColor = [UIColor lightGrayColor];
-        self.visitsDescriptionTV.text = @"Enter Description";
-        [self.visitsDescriptionTV resignFirstResponder];
-    }
-}
 
 #pragma mark - HIDING KEYBOARD
 
@@ -133,10 +109,18 @@
     else
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
         DBManager *dbManager = [[DBManager alloc]init];
-        [dbManager createVisitsSurgDetailsTable];
-        [dbManager saveVisitsSurgDetails:self.visitDateTF.text :self.visitVeternrianTF.text :self.nextInspectionTF.text :self.visitsDescriptionTV.text :[defaults integerForKey:@"dogInfoId"]];
+        
+        if([[defaults objectForKey:@"MedAction"] isEqualToString:@"medAdd"])
+        {
+
+            [dbManager createVisitsSurgDetailsTable];
+            [dbManager saveVisitsSurgDetails:self.visitDateTF.text :self.visitVeternrianTF.text :self.nextInspectionTF.text :self.visitsDescriptionTV.text :[defaults integerForKey:@"dogInfoId"]];
+        }
+        else
+        {
+            [dbManager updateVisitsSurgDetails:self.visitDateTF.text :self.visitVeternrianTF.text :self.nextInspectionTF.text :self.visitsDescriptionTV.text :[(NSNumber*)[self.vstSurgriesAry objectAtIndex:0] intValue]];
+        }
     }
 }
 

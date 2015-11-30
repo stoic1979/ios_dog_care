@@ -12,4 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *dogsCareNotes;
 
+@property NSMutableArray *dogCareNoteAry;
+
+@property UIBarButtonItem *doneRtBarBtn;
+
 @end

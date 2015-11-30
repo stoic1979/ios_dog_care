@@ -24,7 +24,7 @@
     
     self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.showsHorizontalScrollIndicator = YES;
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 700);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 750);
     [self.view addSubview:self.scrollView];
     
     self.nameTF.delegate = self;
@@ -34,6 +34,7 @@
     self.breedTF.delegate = self;
     self.chipTF.delegate = self;
     self.genderTF.delegate = self;
+    
     
     self.datesView = [[UIView alloc]initWithFrame:CGRectMake(20, 120, 375, 200)];
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];

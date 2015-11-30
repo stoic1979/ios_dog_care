@@ -106,6 +106,7 @@
     }
     else if (indexPath.row == 4)
     {
+        [defaults setObject:@"notesAdd" forKey:@"NotesWork"];
         NotesViewController *notesVC = [storyboard instantiateViewControllerWithIdentifier:@"NotesViewControler"];
         [self.navigationController pushViewController:notesVC animated:YES];
     }

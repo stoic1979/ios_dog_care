@@ -31,6 +31,8 @@
 
 -(void)createVisitsSurgDetailsTable;
 
+-(void)createNotesTable;
+
 
 //methods to save data in tables
 
@@ -44,18 +46,22 @@
 
 -(void)saveVisitsSurgDetails:(NSString*)visitDate :(NSString*)veternarian :(NSString*)nextInspectionDate :(NSString*)description :(int)dogInfoID;
 
+-(void)saveNotesDetails:(NSString*)notes :(int)dogInfoID;
+
 
 //methods to fetch data from tables
 
 -(NSMutableArray*)fetchDogsTitles;
 
--(NSMutableArray*)fetchVaccinationTitles;
+-(NSMutableArray*)fetchVaccinationTitles:(int)dogInfoID;
 
--(NSMutableArray*)fetchAntiprsticsTitles;
+-(NSMutableArray*)fetchAntiprsticsTitles:(int)dogInfoID;
 
--(NSMutableArray*)fetchMedicineAdminTitles;
+-(NSMutableArray*)fetchMedicineAdminTitles:(int)dogInfoID;
 
--(NSMutableArray*)fetchVisitsSurgriesDates;
+-(NSMutableArray*)fetchVisitsSurgriesDates:(int)dogInfoID;
+
+-(NSMutableArray*)fetchNotesList:(int)dogInfoID;
 
 -(void)fetchDogDetails:(NSString*)dogName;
 
@@ -66,6 +72,8 @@
 -(NSMutableArray*)fetchMedAdminDetails:(int)dogInfoID;
 
 -(NSMutableArray*)fetchVisitsSurgDetails:(int)dogInfoID;
+
+-(NSMutableArray*)fetchNotesDetails:(int)dogInfoID;
 
 //methods to update data in tables
 
@@ -79,6 +87,8 @@
 
 -(void)updateVisitsSurgDetails:(NSString*)visitDate :(NSString*)veternarian :(NSString*)nextInspectionDate :(NSString*)description :(int)dogInfoID;
 
+-(void)updateNotesDetails:(NSString*)notes :(int)dogInfoID;
+
 //methods to delete data from tables
 
 -(void)removeDogDetails:(int)dogInfoID;
@@ -90,6 +100,8 @@
 -(void)removeMedAdminDetails:(int)dogInfoID;
 
 -(void)removeVisitsSurgDetails:(int)dogInfoID;
+
+-(void)removeNotesDetails:(int)dogInfoID;
 
 
 @end

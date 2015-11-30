@@ -13,6 +13,7 @@
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 #import "DogsTableViewController.h"
+#import "SettingsViewController.h"
 #import "DBManager.h"
 
 @interface SIdeMenuViewController ()
@@ -118,15 +119,16 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
-    DogsTableViewController *vc;
+    DogsTableViewController *dogsVC;
+    SettingsViewController *settingsVC;
     DBManager *dbManager = [[DBManager alloc]init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     switch (indexPath.row)
     {
         case 0:
-            vc = [storyboard instantiateViewControllerWithIdentifier: @"DogsTableViewControler"];
-            [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
+            dogsVC = [storyboard instantiateViewControllerWithIdentifier: @"DogsTableViewControler"];
+            [[SlideNavigationController sharedInstance] pushViewController:dogsVC animated:YES];
             break;
             
         case 1:
@@ -140,6 +142,7 @@
             [dbManager removeAntiparasiticsDetails:dogId];
             [dbManager removeMedAdminDetails:dogId];
             [dbManager removeVisitsSurgDetails:dogId];
+            [dbManager removeNotesDetails:dogId];
             
 //            [defaults setInteger:0 forKey:@"dogInfoId"];
             [defaults setObject:@"" forKey:@"dogTitle"];
@@ -153,7 +156,8 @@
             break;
             
         case 2:
-            NSLog(@"Settings");
+            settingsVC = [storyboard instantiateViewControllerWithIdentifier: @"SettingsViewControler"];
+            [[SlideNavigationController sharedInstance] pushViewController:settingsVC animated:YES];
             break;
             
         case 3:

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddMedicineAdminDetailsViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
+@interface AddMedicineAdminDetailsViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *medScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *medicationNameTF;
